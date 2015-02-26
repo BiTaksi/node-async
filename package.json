@@ -1,7 +1,7 @@
 {
   "name": "alinex-async",
   "version": "0.0.0",
-  "description": "",
+  "description": "An extended version of the async library.",
   "copyright": "Alexander Schilling 2015",
   "private": false,
   "keywords": [],
@@ -28,7 +28,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "alinex-make": "0.4.x"
+    "alinex-make": "0.4.x",
+    "async": "^0.9.0"
   },
   "optionalDependencies": {},
   "engines": {
