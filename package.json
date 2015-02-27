@@ -4,7 +4,11 @@
   "description": "An extended version of the async library.",
   "copyright": "Alexander Schilling 2015",
   "private": false,
-  "keywords": [ "async", "controlflow" ],
+  "keywords": [
+    "async",
+    "controlflow",
+    "once"
+  ],
   "homepage": "http://alinex.github.io/node-async/",
   "repository": {
     "type": "git",
@@ -29,8 +33,9 @@
   "dependencies": {},
   "devDependencies": {
     "alinex-builder": "1.x",
-    "chai": "2.x",
-    "async": "0.9.x"
+    "alinex-error": "0.2.x",
+    "async": "0.9.x",
+    "chai": "2.x"
   },
   "optionalDependencies": {},
   "engines": {

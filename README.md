@@ -34,6 +34,47 @@ module:
     var async = require 'alinex-async'
 
 
+Run function once
+-------------------------------------------------
+
+The once-part contains of different implementations which decide what will
+happen on the second call.
+
+### once.skip
+
+A function may be wrapped with the once method:
+
+    var fn = async.once.skip(function(a, b, cb) {
+      return cb(null, a + b);
+    });
+
+And now you can call the function as normal but on the second call it will
+return imediately without running the code:
+
+    fn(2, 3, function(err, x) {
+      // x will now be 5
+      fn(2, 3, function(err, x) {
+        // err will now be set
+      });
+    });
+
+You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.
+
+### once.throw
+
+throw an error if it is called a second time
+
+### once.atime
+
+only run it once at a time but response all calls with the result
+
+### once.wait
+
+the second call will get return with the same result
+
 
 License
 -------------------------------------------------
