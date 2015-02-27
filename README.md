@@ -33,68 +33,51 @@ module:
 
     async = require 'alinex-async'
 
+Now you may use one of the following methods.
 
-Run function once
+
+Collections
 -------------------------------------------------
 
-The once-part contains of different implementations which decide what will
-happen on the second call.
+### each
+### eachLimit
+### eachSeries
+### map
+### mapLimit
+### mapSeries
+### filter
+### reject
 
-### once.skip
 
-A function may be wrapped with the once method:
+Control flow
+-------------------------------------------------
 
-    fn = async.once.skip (a, b, cb) -> cb null, a + b
+### series
+### parallel
+### parallelLimit
+### whilst
+### doWhilst
+### until
+### doUntil
+### forever
+### waterfall
+### applyEach
+### applyEachSeries
+### queue
+### priorityQueue
+### retry
+### times
+###timesSeries
 
-And now you can call the function as normal but on the second call it will
-return imediately without running the code:
 
-    fn 2, 3, (err, x) ->
-      // x will now be 5
-      fn 2, 9, (err, x) ->
-        // err will now be set
+Function wrapper
+-------------------------------------------------
 
-You may use this helper in case of initialization (wait) there a specific
-method have to run once before any other call can succeed. Or then events
-are involved and an error event will trigger the callback and the end event will
-do the same.
-
-### once.throw
-
-Throw an error if it is called a second time:
-
-    fn = async.once.skip (a, b, cb) -> cb null, a + b
-
-If you call this method multiple times it will throw an exception:
-
-    fn 2, 3, (err, x) ->
-      // x will now be 5
-      fn 2, 9, (err, x) ->
-        // will neither get there because an exception is thrown above
-
-### once.atime
-
-Only run it once at a time but response all calls with the result:
-
-    fn = async.once.atime (cb) ->
-      time = process.hrtime()
-      setTimeout ->
-        cb null, time[1]
-      , 1000
-
-And now you may call it multiple times but it will not run more than once
-simultaneously. But all simultaneous calls will get the same result.
-
-    async.parallel [ fn, fn ], (err, results) ->
-      // will come here exactly after the first call finished (because the
-      // second will do so the same time)
-      // results here will be the same integer, twice
-
-### once.wait
+### once
 
 The second and later calls will return with the same result:
 
-      fn = async.once.wait (cb) ->
+      fn = async.once (cb) ->
         time = process.hrtime()
         setTimeout ->
           cb null, time[1]
@@ -110,6 +93,57 @@ function may start because it is not done:
         // results here will be the same integer, twice
         fn (err, result) ->
           // and this call will return imediately with the previous result
+
+### onceSkip
+
+A function may be wrapped with the once method:
+
+    fn = async.onceSkip (a, b, cb) -> cb null, a + b
+
+And now you can call the function as normal but on the second call it will
+return imediately without running the code:
+
+    fn 2, 3, (err, x) ->
+      // x will now be 5
+      fn 2, 9, (err, x) ->
+        // err will now be set on the second call
+
+You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.
+
+### onceThrow
+
+Throw an error if it is called a second time:
+
+    fn = async.onceThrow (a, b, cb) -> cb null, a + b
+
+If you call this method multiple times it will throw an exception:
+
+    fn 2, 3, (err, x) ->
+      // x will now be 5
+      fn 2, 9, (err, x) ->
+        // will neither get there because an exception is thrown above
+
+### onceTtime
+
+Only run it once at a time but response all calls with the result:
+
+    fn = async.onceTime (cb) ->
+      time = process.hrtime()
+      setTimeout ->
+        cb null, time[1]
+      , 1000
+
+And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.
+
+    async.parallel [ fn, fn ], (err, results) ->
+      // will come here exactly after the first call finished (because the
+      // second will do so the same time)
+      // results here will be the same integer, twice
+
 
 
 License

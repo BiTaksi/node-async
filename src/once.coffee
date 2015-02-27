@@ -48,7 +48,7 @@ module.exports.skip = (func, context) ->
 # -------------------------------------------------
 # If it is called a second time it will return only after the first call
 # has finished. This makes only sense with asynchronous functions.
-module.exports.atime = (func, context) ->
+module.exports.time = (func, context) ->
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
