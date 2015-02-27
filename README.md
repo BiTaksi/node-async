@@ -126,7 +126,7 @@ If you call this method multiple times it will throw an exception:
       fn 2, 9, (err, x) ->
         // will neither get there because an exception is thrown above
 
-### onceTtime
+### onceTime
 
 Only run it once at a time but response all calls with the result:
 
