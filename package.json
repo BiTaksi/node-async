@@ -4,7 +4,7 @@
   "description": "An extended version of the async library.",
   "copyright": "Alexander Schilling 2015",
   "private": false,
-  "keywords": [],
+  "keywords": [ "async", "controlflow" ],
   "homepage": "http://alinex.github.io/node-async/",
   "repository": {
     "type": "git",
@@ -20,16 +20,17 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/alinex-make -c compile",
-    "test": "node_modules/.bin/alinex-make -c test"
+    "prepublish": "node_modules/.bin/builder -c compile",
+    "test": "node_modules/.bin/builder -c test"
   },
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {},
   "devDependencies": {
-    "alinex-make": "0.4.x",
-    "async": "^0.9.0"
+    "alinex-builder": "1.x",
+    "chai": "2.x",
+    "async": "0.9.x"
   },
   "optionalDependencies": {},
   "engines": {
