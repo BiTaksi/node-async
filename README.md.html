@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "", thisFile = "home/alex/a3/node-async/READMEmd", defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+  <script src="fileSearch.js"></script>
+  <script src="goToLine.js"></script>
+  <link rel="stylesheet" href="fileSearch.css" />
+  <link rel="stylesheet" href="goToLine.css" />
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#package%3A%20alinex-async">Package: alinex-async</a>
+      </div>
+      <div class="heading h2">
+        <a href="#install">Install</a>
+      </div>
+      <div class="heading h2">
+        <a href="#usage">Usage</a>
+      </div>
+      <div class="heading h2">
+        <a href="#run%20function%20once">Run function once</a>
+      </div>
+      <div class="heading h3">
+        <a href="#once.skip">once.skip</a>
+      </div>
+      <div class="heading h3">
+        <a href="#once.throw">once.throw</a>
+      </div>
+      <div class="heading h3">
+        <a href="#once.atime">once.atime</a>
+      </div>
+      <div class="heading h3">
+        <a href="#once.wait">once.wait</a>
+      </div>
+      <div class="heading h2">
+        <a href="#license">License</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="docs markdown">
+<div class="pilwrap" id="package%3A%20alinex-async">
+  <h1>
+    <a href="#package%3A%20alinex-async" name="package%3A%20alinex-async" class="pilcrow">&#182;</a>
+    Package: alinex-async
+  </h1>
+</div>
+
+
+<p><a href="https://travis-ci.org/alinex/node-async"><img src="https://travis-ci.org/alinex/node-async.svg?branch=master" alt="Build Status" title="" /></a>
+<a href="https://gemnasium.com/alinex/node-async"><img src="https://gemnasium.com/alinex/node-async.png" alt="Dependency Status" title="" /></a></p>
+
+<p>This package will extend the async module with more useful functions. The package
+will help in structuring in asynchronous programming.</p>
+
+<ul>
+<li>easy functions</li>
+<li>makes code more readable</li>
+</ul>
+
+<p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex">Alinex Universe</a>
+following the code standards defined there.</p>
+
+
+<div class="pilwrap" id="install">
+  <h2>
+    <a href="#install" name="install" class="pilcrow">&#182;</a>
+    Install
+  </h2>
+</div>
+
+
+<p>To use this module you should install it as any other node modules:</p>
+
+
+<div class="highlight"><pre><code><span class="o">&gt;</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">alinex</span><span class="o">-</span><span class="nx">async</span> <span class="o">--</span><span class="nx">save</span>
+</code></pre></div>
+
+
+
+<p><a href="https://nodei.co/npm/alinex-async/"><img src="https://nodei.co/npm/alinex-async.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
+
+
+<div class="pilwrap" id="usage">
+  <h2>
+    <a href="#usage" name="usage" class="pilcrow">&#182;</a>
+    Usage
+  </h2>
+</div>
+
+
+<p>Now it can be used like the normal <a href="https://github.com/caolan/async">async</a>
+module:</p>
+
+
+<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">async</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-async&#39;</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="run%20function%20once">
+  <h2>
+    <a href="#run%20function%20once" name="run%20function%20once" class="pilcrow">&#182;</a>
+    Run function once
+  </h2>
+</div>
+
+
+<p>The once-part contains of different implementations which decide what will
+happen on the second call.</p>
+
+
+<div class="pilwrap" id="once.skip">
+  <h3>
+    <a href="#once.skip" name="once.skip" class="pilcrow">&#182;</a>
+    once.skip
+  </h3>
+</div>
+
+
+<p>A function may be wrapped with the once method:</p>
+
+
+<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+<p>And now you can call the function as normal but on the second call it will
+return imediately without running the code:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// x will now be 5</span>
+  <span class="nx">fn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// err will now be set</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+<p>You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.</p>
+
+
+<div class="pilwrap" id="once.throw">
+  <h3>
+    <a href="#once.throw" name="once.throw" class="pilcrow">&#182;</a>
+    once.throw
+  </h3>
+</div>
+
+
+<p>throw an error if it is called a second time</p>
+
+
+<div class="pilwrap" id="once.atime">
+  <h3>
+    <a href="#once.atime" name="once.atime" class="pilcrow">&#182;</a>
+    once.atime
+  </h3>
+</div>
+
+
+<p>only run it once at a time but response all calls with the result</p>
+
+
+<div class="pilwrap" id="once.wait">
+  <h3>
+    <a href="#once.wait" name="once.wait" class="pilcrow">&#182;</a>
+    once.wait
+  </h3>
+</div>
+
+
+<p>the second call will get return with the same result</p>
+
+
+<div class="pilwrap" id="license">
+  <h2>
+    <a href="#license" name="license" class="pilcrow">&#182;</a>
+    License
+  </h2>
+</div>
+
+
+<p>Copyright 2015 Alexander Schilling</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<blockquote>
+  <p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</blockquote>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
+  </div>
+</body>
+</html>

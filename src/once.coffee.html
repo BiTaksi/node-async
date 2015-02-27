@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>once.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../", thisFile = "home/alex/a3/node-async/src/oncecoffee", defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+  <script src="../fileSearch.js"></script>
+  <script src="../goToLine.js"></script>
+  <link rel="stylesheet" href="../fileSearch.css" />
+  <link rel="stylesheet" href="../goToLine.css" />
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#helper%20to%20call%20given%20function%20once">Helper to call given function once</a>
+      </div>
+      <div class="heading h2">
+        <a href="#throw%20an%20error">Throw an error</a>
+      </div>
+      <div class="heading h2">
+        <a href="#skip%20execution">Skip execution</a>
+      </div>
+      <div class="heading h2">
+        <a href="#only%20once%20atime">Only once atime</a>
+      </div>
+      <div class="heading h2">
+        <a href="#wait%20if%20just%20running">Wait if just running</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="helper%20to%20call%20given%20function%20once">
+  <h1>
+    <a href="#helper%20to%20call%20given%20function%20once" name="helper%20to%20call%20given%20function%20once" class="pilcrow">&#182;</a>
+    Helper to call given function once
+  </h1>
+</div>
+
+
+<p>This methods will wrap a given function. Afterwards it will only run once
+also if called multiple times.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="throw%20an%20error">
+  <h2>
+    <a href="#throw%20an%20error" name="throw%20an%20error" class="pilcrow">&#182;</a>
+    Throw an error
+  </h2>
+</div>
+
+
+<p>If it is called a second time an error will be thrown.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.throw = </span><span class="nf">(func, context) -&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3">&#182;</a>
+</div>
+<p>check parameters</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">func</span> <span class="o">is</span> <span class="s">&#39;function&#39;</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;Argument func is not a function!&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4">&#182;</a>
+</div>
+<p>flags</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">called = </span><span class="kc">false</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5">&#182;</a>
+</div>
+<p>return wrapper function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nf">-&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6">&#182;</a>
+</div>
+<p>throw error after first call</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">if</span> <span class="nx">called</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;This function should only be called once.&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7">&#182;</a>
+</div>
+<p>run real function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">called = </span><span class="kc">true</span>
+    <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="skip%20execution">
+  <h2>
+    <a href="#skip%20execution" name="skip%20execution" class="pilcrow">&#182;</a>
+    Skip execution
+  </h2>
+</div>
+
+
+<p>If it is called a second time execution is skipped and an error will be returned.
+You may use the error or not.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.skip = </span><span class="nf">(func, context) -&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9">&#182;</a>
+</div>
+<p>check parameters</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">func</span> <span class="o">is</span> <span class="s">&#39;function&#39;</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;Argument func is not a function!&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10">&#182;</a>
+</div>
+<p>flags</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">called = </span><span class="kc">false</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11">&#182;</a>
+</div>
+<p>return wrapper function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nf">-&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12">&#182;</a>
+</div>
+<p>get callback parameter</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">cb = </span><span class="nx">arguments</span><span class="p">[</span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13">&#182;</a>
+</div>
+<p>throw error after first call</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">if</span> <span class="nx">called</span>
+      <span class="nv">err = </span><span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;This function should only be called once.&quot;</span>
+      <span class="k">return</span> <span class="nx">cb</span> <span class="nx">err</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">cb</span> <span class="o">is</span> <span class="s">&#39;function&#39;</span>
+      <span class="k">return</span> <span class="nx">err</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14">&#182;</a>
+</div>
+<p>run real function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">called = </span><span class="kc">true</span>
+    <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="only%20once%20atime">
+  <h2>
+    <a href="#only%20once%20atime" name="only%20once%20atime" class="pilcrow">&#182;</a>
+    Only once atime
+  </h2>
+</div>
+
+
+<p>If it is called a second time it will return only after the first call
+has finished. This makes only sense with asynchronous functions.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.atime = </span><span class="nf">(func, context) -&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-16" id="section-16">&#182;</a>
+</div>
+<p>check parameters</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">func</span> <span class="o">is</span> <span class="s">&#39;function&#39;</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;Argument func is not a function!&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-17" id="section-17">&#182;</a>
+</div>
+<p>flags</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">started = </span><span class="kc">false</span> <span class="c1"># if the function has already started</span>
+  <span class="nv">listeners = </span><span class="p">[]</span>  <span class="c1"># callbacks waiting</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-18" id="section-18">&#182;</a>
+</div>
+<p>return wrapper function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nf">-&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-19" id="section-19">&#182;</a>
+</div>
+<p>get callback parameter</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
+    <span class="nv">cb = </span><span class="nx">args</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span> <span class="o">?</span> <span class="p">{}</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-20" id="section-20">&#182;</a>
+</div>
+<p>add to listeners</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
+    <span class="k">return</span> <span class="k">if</span> <span class="nx">started</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-21" id="section-21">&#182;</a>
+</div>
+<p>add the wrapper callback</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">started = </span><span class="kc">true</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-22" id="section-22">&#182;</a>
+</div>
+<p>start sending back and reopening method</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="nv">started = </span><span class="kc">false</span>
+      <span class="nv">work = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">listeners</span>
+      <span class="nv">listeners = </span><span class="p">[]</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-23" id="section-23">&#182;</a>
+</div>
+<p>call all listeners</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">work</span>
+        <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">arguments</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-24" id="section-24">&#182;</a>
+</div>
+<p>run real function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">args</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="wait%20if%20just%20running">
+  <h2>
+    <a href="#wait%20if%20just%20running" name="wait%20if%20just%20running" class="pilcrow">&#182;</a>
+    Wait if just running
+  </h2>
+</div>
+
+
+<p>If it is called a second time it will return only after the first call
+has finished. This makes only sense with asynchronous functions.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.wait = </span><span class="nf">(func, context) -&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-26" id="section-26">&#182;</a>
+</div>
+<p>check parameters</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">func</span> <span class="o">is</span> <span class="s">&#39;function&#39;</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;Argument func is not a function!&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-27" id="section-27">&#182;</a>
+</div>
+<p>flags</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">started = </span><span class="kc">false</span> <span class="c1"># if the function has already started</span>
+  <span class="nv">done = </span><span class="kc">false</span>    <span class="c1"># if the function has already ended</span>
+  <span class="nv">listeners = </span><span class="p">[]</span>  <span class="c1"># callbacks waiting</span>
+  <span class="nv">results = </span><span class="p">[]</span>    <span class="c1"># the results stored for further calls</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-28" id="section-28">&#182;</a>
+</div>
+<p>return wrapper function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nf">-&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-29" id="section-29">&#182;</a>
+</div>
+<p>get callback parameter</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
+    <span class="nv">cb = </span><span class="nx">args</span><span class="p">.</span><span class="nx">pop</span><span class="p">()</span> <span class="o">?</span> <span class="p">{}</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-30" id="section-30">&#182;</a>
+</div>
+<p>return if already done</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">return</span> <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span> <span class="k">if</span> <span class="nx">done</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-31" id="section-31">&#182;</a>
+</div>
+<p>add to listeners</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
+    <span class="k">return</span> <span class="k">if</span> <span class="nx">started</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-32" id="section-32">&#182;</a>
+</div>
+<p>add the wrapper callback</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">started = </span><span class="kc">true</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-33" id="section-33">&#182;</a>
+</div>
+<p>store results</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="nv">done = </span><span class="kc">true</span>
+      <span class="nv">results = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-34" id="section-34">&#182;</a>
+</div>
+<p>call all listeners</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span> <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">listeners</span>
+      <span class="nv">listeners = </span><span class="kc">null</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-35" id="section-35">&#182;</a>
+</div>
+<p>run real function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">args</span>
+</pre></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+  </div>
+</body>
+</html>
