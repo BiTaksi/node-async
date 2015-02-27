@@ -107,7 +107,7 @@ following the code standards defined there.</p>
 module:</p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">async</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-async&#39;</span>
+<div class="highlight"><pre><code><span class="nx">async</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-async&#39;</span>
 </code></pre></div>
 
 
@@ -136,9 +136,7 @@ happen on the second call.</p>
 <p>A function may be wrapped with the once method:</p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">});</span>
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
 </code></pre></div>
 
 
@@ -147,12 +145,10 @@ happen on the second call.</p>
 return imediately without running the code:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">fn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
   <span class="c1">// x will now be 5</span>
-  <span class="nx">fn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
     <span class="c1">// err will now be set</span>
-  <span class="p">});</span>
-<span class="p">});</span>
 </code></pre></div>
 
 
@@ -171,7 +167,24 @@ do the same.</p>
 </div>
 
 
-<p>throw an error if it is called a second time</p>
+<p>Throw an error if it is called a second time:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+</code></pre></div>
+
+
+
+<p>If you call this method multiple times it will throw an exception:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1">// x will now be 5</span>
+  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="c1">// will neither get there because an exception is thrown above</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="once.atime">
@@ -182,7 +195,29 @@ do the same.</p>
 </div>
 
 
-<p>only run it once at a time but response all calls with the result</p>
+<p>Only run it once at a time but response all calls with the result:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">atime</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
+  <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
+    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="p">,</span> <span class="mi">1000</span>
+</code></pre></div>
+
+
+
+<p>And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.</p>
+
+
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1">// will come here exactly after the first call finished (because the</span>
+  <span class="c1">// second will do so the same time)</span>
+  <span class="c1">// results here will be the same integer, twice</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="once.wait">
@@ -193,7 +228,32 @@ do the same.</p>
 </div>
 
 
-<p>the second call will get return with the same result</p>
+<p>The second and later calls will return with the same result:</p>
+
+
+<div class="highlight"><pre><code>  <span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">wait</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
+    <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
+      <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">,</span> <span class="mi">1000</span>
+</code></pre></div>
+
+
+
+<p>Use this to make some initializations which only have to run once but neither
+function may start because it is not done:</p>
+
+
+<div class="highlight"><pre><code>  <span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="c1">// same as with `once.atime` it will come here exactly after the</span>
+    <span class="c1">// first call finished because the second one will get the</span>
+    <span class="c1">// result the same time</span>
+    <span class="c1">// results here will be the same integer, twice</span>
+    <span class="nx">fn</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="c1">// and this call will return imediately with the previous result</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="license">
