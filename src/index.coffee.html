@@ -105,7 +105,10 @@
         </td>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">module.exports = </span><span class="nx">async</span>
-<span class="nv">module.exports.once = </span><span class="nx">once</span>
+<span class="nv">module.exports.once = </span><span class="nx">once</span><span class="p">.</span><span class="nx">wait</span>
+<span class="nv">module.exports.onceSkip = </span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span>
+<span class="nv">module.exports.onceThrow = </span><span class="nx">once</span><span class="p">.</span><span class="nx">throw</span>
+<span class="nv">module.exports.onceTime = </span><span class="nx">once</span><span class="p">.</span><span class="nx">time</span>
 </pre></div>
         </td>
       </tr>

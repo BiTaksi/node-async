@@ -32,19 +32,97 @@
         <a href="#usage">Usage</a>
       </div>
       <div class="heading h2">
-        <a href="#run%20function%20once">Run function once</a>
+        <a href="#collections">Collections</a>
       </div>
       <div class="heading h3">
-        <a href="#once.skip">once.skip</a>
+        <a href="#each">each</a>
       </div>
       <div class="heading h3">
-        <a href="#once.throw">once.throw</a>
+        <a href="#eachlimit">eachLimit</a>
       </div>
       <div class="heading h3">
-        <a href="#once.atime">once.atime</a>
+        <a href="#eachseries">eachSeries</a>
       </div>
       <div class="heading h3">
-        <a href="#once.wait">once.wait</a>
+        <a href="#map">map</a>
+      </div>
+      <div class="heading h3">
+        <a href="#maplimit">mapLimit</a>
+      </div>
+      <div class="heading h3">
+        <a href="#mapseries">mapSeries</a>
+      </div>
+      <div class="heading h3">
+        <a href="#filter">filter</a>
+      </div>
+      <div class="heading h3">
+        <a href="#reject">reject</a>
+      </div>
+      <div class="heading h2">
+        <a href="#control%20flow">Control flow</a>
+      </div>
+      <div class="heading h3">
+        <a href="#series">series</a>
+      </div>
+      <div class="heading h3">
+        <a href="#parallel">parallel</a>
+      </div>
+      <div class="heading h3">
+        <a href="#parallellimit">parallelLimit</a>
+      </div>
+      <div class="heading h3">
+        <a href="#whilst">whilst</a>
+      </div>
+      <div class="heading h3">
+        <a href="#dowhilst">doWhilst</a>
+      </div>
+      <div class="heading h3">
+        <a href="#until">until</a>
+      </div>
+      <div class="heading h3">
+        <a href="#dountil">doUntil</a>
+      </div>
+      <div class="heading h3">
+        <a href="#forever">forever</a>
+      </div>
+      <div class="heading h3">
+        <a href="#waterfall">waterfall</a>
+      </div>
+      <div class="heading h3">
+        <a href="#applyeach">applyEach</a>
+      </div>
+      <div class="heading h3">
+        <a href="#applyeachseries">applyEachSeries</a>
+      </div>
+      <div class="heading h3">
+        <a href="#queue">queue</a>
+      </div>
+      <div class="heading h3">
+        <a href="#priorityqueue">priorityQueue</a>
+      </div>
+      <div class="heading h3">
+        <a href="#retry">retry</a>
+      </div>
+      <div class="heading h3">
+        <a href="#times">times</a>
+      </div>
+      <div class="heading h3">
+        <a href="#timesseries">timesSeries</a>
+      </div>
+      <div class="heading h2">
+        <a href="#function%20wrapper">Function wrapper</a>
+      </div>
+      <div class="heading h3">
+        <a href="#once">once</a>
+      </div>
+      <div class="heading h3">
+        <a href="#onceskip">onceSkip</a>
+      </div>
+      <div class="heading h3">
+        <a href="#oncethrow">onceThrow</a>
+      </div>
+      <div class="heading h3">
+        <a href="#oncettime">onceTtime</a>
       </div>
       <div class="heading h2">
         <a href="#license">License</a>
@@ -112,118 +190,256 @@ module:</p>
 
 
 
+<p>Now you may use one of the following methods.</p>
 
-<div class="pilwrap" id="run%20function%20once">
+
+<div class="pilwrap" id="collections">
   <h2>
-    <a href="#run%20function%20once" name="run%20function%20once" class="pilcrow">&#182;</a>
-    Run function once
+    <a href="#collections" name="collections" class="pilcrow">&#182;</a>
+    Collections
   </h2>
 </div>
 
 
-<p>The once-part contains of different implementations which decide what will
-happen on the second call.</p>
 
-
-<div class="pilwrap" id="once.skip">
+<div class="pilwrap" id="each">
   <h3>
-    <a href="#once.skip" name="once.skip" class="pilcrow">&#182;</a>
-    once.skip
+    <a href="#each" name="each" class="pilcrow">&#182;</a>
+    each
   </h3>
 </div>
 
 
-<p>A function may be wrapped with the once method:</p>
 
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
-</code></pre></div>
-
-
-
-<p>And now you can call the function as normal but on the second call it will
-return imediately without running the code:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="c1">// x will now be 5</span>
-  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="c1">// err will now be set</span>
-</code></pre></div>
-
-
-
-<p>You may use this helper in case of initialization (wait) there a specific
-method have to run once before any other call can succeed. Or then events
-are involved and an error event will trigger the callback and the end event will
-do the same.</p>
-
-
-<div class="pilwrap" id="once.throw">
+<div class="pilwrap" id="eachlimit">
   <h3>
-    <a href="#once.throw" name="once.throw" class="pilcrow">&#182;</a>
-    once.throw
+    <a href="#eachlimit" name="eachlimit" class="pilcrow">&#182;</a>
+    eachLimit
   </h3>
 </div>
 
 
-<p>Throw an error if it is called a second time:</p>
 
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
-</code></pre></div>
-
-
-
-<p>If you call this method multiple times it will throw an exception:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="c1">// x will now be 5</span>
-  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="c1">// will neither get there because an exception is thrown above</span>
-</code></pre></div>
-
-
-
-
-<div class="pilwrap" id="once.atime">
+<div class="pilwrap" id="eachseries">
   <h3>
-    <a href="#once.atime" name="once.atime" class="pilcrow">&#182;</a>
-    once.atime
+    <a href="#eachseries" name="eachseries" class="pilcrow">&#182;</a>
+    eachSeries
   </h3>
 </div>
 
 
-<p>Only run it once at a time but response all calls with the result:</p>
 
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">atime</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
-  <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-  <span class="p">,</span> <span class="mi">1000</span>
-</code></pre></div>
-
-
-
-<p>And now you may call it multiple times but it will not run more than once
-simultaneously. But all simultaneous calls will get the same result.</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="c1">// will come here exactly after the first call finished (because the</span>
-  <span class="c1">// second will do so the same time)</span>
-  <span class="c1">// results here will be the same integer, twice</span>
-</code></pre></div>
-
-
-
-
-<div class="pilwrap" id="once.wait">
+<div class="pilwrap" id="map">
   <h3>
-    <a href="#once.wait" name="once.wait" class="pilcrow">&#182;</a>
-    once.wait
+    <a href="#map" name="map" class="pilcrow">&#182;</a>
+    map
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="maplimit">
+  <h3>
+    <a href="#maplimit" name="maplimit" class="pilcrow">&#182;</a>
+    mapLimit
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="mapseries">
+  <h3>
+    <a href="#mapseries" name="mapseries" class="pilcrow">&#182;</a>
+    mapSeries
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="filter">
+  <h3>
+    <a href="#filter" name="filter" class="pilcrow">&#182;</a>
+    filter
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="reject">
+  <h3>
+    <a href="#reject" name="reject" class="pilcrow">&#182;</a>
+    reject
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="control%20flow">
+  <h2>
+    <a href="#control%20flow" name="control%20flow" class="pilcrow">&#182;</a>
+    Control flow
+  </h2>
+</div>
+
+
+
+<div class="pilwrap" id="series">
+  <h3>
+    <a href="#series" name="series" class="pilcrow">&#182;</a>
+    series
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="parallel">
+  <h3>
+    <a href="#parallel" name="parallel" class="pilcrow">&#182;</a>
+    parallel
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="parallellimit">
+  <h3>
+    <a href="#parallellimit" name="parallellimit" class="pilcrow">&#182;</a>
+    parallelLimit
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="whilst">
+  <h3>
+    <a href="#whilst" name="whilst" class="pilcrow">&#182;</a>
+    whilst
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="dowhilst">
+  <h3>
+    <a href="#dowhilst" name="dowhilst" class="pilcrow">&#182;</a>
+    doWhilst
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="until">
+  <h3>
+    <a href="#until" name="until" class="pilcrow">&#182;</a>
+    until
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="dountil">
+  <h3>
+    <a href="#dountil" name="dountil" class="pilcrow">&#182;</a>
+    doUntil
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="forever">
+  <h3>
+    <a href="#forever" name="forever" class="pilcrow">&#182;</a>
+    forever
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="waterfall">
+  <h3>
+    <a href="#waterfall" name="waterfall" class="pilcrow">&#182;</a>
+    waterfall
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="applyeach">
+  <h3>
+    <a href="#applyeach" name="applyeach" class="pilcrow">&#182;</a>
+    applyEach
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="applyeachseries">
+  <h3>
+    <a href="#applyeachseries" name="applyeachseries" class="pilcrow">&#182;</a>
+    applyEachSeries
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="queue">
+  <h3>
+    <a href="#queue" name="queue" class="pilcrow">&#182;</a>
+    queue
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="priorityqueue">
+  <h3>
+    <a href="#priorityqueue" name="priorityqueue" class="pilcrow">&#182;</a>
+    priorityQueue
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="retry">
+  <h3>
+    <a href="#retry" name="retry" class="pilcrow">&#182;</a>
+    retry
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="times">
+  <h3>
+    <a href="#times" name="times" class="pilcrow">&#182;</a>
+    times
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="timesseries">
+  <h3>
+    <a href="#timesseries" name="timesseries" class="pilcrow">&#182;</a>
+    timesSeries
+  </h3>
+</div>
+
+
+
+<div class="pilwrap" id="function%20wrapper">
+  <h2>
+    <a href="#function%20wrapper" name="function%20wrapper" class="pilcrow">&#182;</a>
+    Function wrapper
+  </h2>
+</div>
+
+
+
+<div class="pilwrap" id="once">
+  <h3>
+    <a href="#once" name="once" class="pilcrow">&#182;</a>
+    once
   </h3>
 </div>
 
@@ -231,7 +447,7 @@ simultaneously. But all simultaneous calls will get the same result.</p>
 <p>The second and later calls will return with the same result:</p>
 
 
-<div class="highlight"><pre><code>  <span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span><span class="p">.</span><span class="nx">wait</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+<div class="highlight"><pre><code>  <span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
     <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
     <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
       <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -251,6 +467,101 @@ function may start because it is not done:</p>
     <span class="c1">// results here will be the same integer, twice</span>
     <span class="nx">fn</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="o">-&gt;</span>
       <span class="c1">// and this call will return imediately with the previous result</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="onceskip">
+  <h3>
+    <a href="#onceskip" name="onceskip" class="pilcrow">&#182;</a>
+    onceSkip
+  </h3>
+</div>
+
+
+<p>A function may be wrapped with the once method:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">onceSkip</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+</code></pre></div>
+
+
+
+<p>And now you can call the function as normal but on the second call it will
+return imediately without running the code:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1">// x will now be 5</span>
+  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="c1">// err will now be set on the second call</span>
+</code></pre></div>
+
+
+
+<p>You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.</p>
+
+
+<div class="pilwrap" id="oncethrow">
+  <h3>
+    <a href="#oncethrow" name="oncethrow" class="pilcrow">&#182;</a>
+    onceThrow
+  </h3>
+</div>
+
+
+<p>Throw an error if it is called a second time:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">onceThrow</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+</code></pre></div>
+
+
+
+<p>If you call this method multiple times it will throw an exception:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1">// x will now be 5</span>
+  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="c1">// will neither get there because an exception is thrown above</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="oncettime">
+  <h3>
+    <a href="#oncettime" name="oncettime" class="pilcrow">&#182;</a>
+    onceTtime
+  </h3>
+</div>
+
+
+<p>Only run it once at a time but response all calls with the result:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">onceTime</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
+  <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
+    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="p">,</span> <span class="mi">1000</span>
+</code></pre></div>
+
+
+
+<p>And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.</p>
+
+
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="c1">// will come here exactly after the first call finished (because the</span>
+  <span class="c1">// second will do so the same time)</span>
+  <span class="c1">// results here will be the same integer, twice</span>
 </code></pre></div>
 
 
