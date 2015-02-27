@@ -31,7 +31,7 @@ Usage
 Now it can be used like the normal [async](https://github.com/caolan/async)
 module:
 
-    var async = require 'alinex-async'
+    async = require 'alinex-async'
 
 
 Run function once
@@ -44,19 +44,15 @@ happen on the second call.
 
 A function may be wrapped with the once method:
 
-    var fn = async.once.skip(function(a, b, cb) {
-      return cb(null, a + b);
-    });
+    fn = async.once.skip (a, b, cb) -> cb null, a + b
 
 And now you can call the function as normal but on the second call it will
 return imediately without running the code:
 
-    fn(2, 3, function(err, x) {
+    fn 2, 3, (err, x) ->
       // x will now be 5
-      fn(2, 3, function(err, x) {
+      fn 2, 9, (err, x) ->
         // err will now be set
-      });
-    });
 
 You may use this helper in case of initialization (wait) there a specific
 method have to run once before any other call can succeed. Or then events
@@ -65,15 +61,55 @@ do the same.
 
 ### once.throw
 
-throw an error if it is called a second time
+Throw an error if it is called a second time:
+
+    fn = async.once.skip (a, b, cb) -> cb null, a + b
+
+If you call this method multiple times it will throw an exception:
+
+    fn 2, 3, (err, x) ->
+      // x will now be 5
+      fn 2, 9, (err, x) ->
+        // will neither get there because an exception is thrown above
 
 ### once.atime
 
-only run it once at a time but response all calls with the result
+Only run it once at a time but response all calls with the result:
+
+    fn = async.once.atime (cb) ->
+      time = process.hrtime()
+      setTimeout ->
+        cb null, time[1]
+      , 1000
+
+And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.
+
+    async.parallel [ fn, fn ], (err, results) ->
+      // will come here exactly after the first call finished (because the
+      // second will do so the same time)
+      // results here will be the same integer, twice
 
 ### once.wait
 
-the second call will get return with the same result
+The second and later calls will return with the same result:
+
+      fn = async.once.wait (cb) ->
+        time = process.hrtime()
+        setTimeout ->
+          cb null, time[1]
+        , 1000
+
+Use this to make some initializations which only have to run once but neither
+function may start because it is not done:
+
+      async.parallel [ fn, fn ], (err, results) ->
+        // same as with `once.atime` it will come here exactly after the
+        // first call finished because the second one will get the
+        // result the same time
+        // results here will be the same integer, twice
+        fn (err, result) ->
+          // and this call will return imediately with the previous result
 
 
 License
