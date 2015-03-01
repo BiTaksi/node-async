@@ -40,7 +40,18 @@ Collections
 -------------------------------------------------
 
 ### each
+
+Applies the function parallel to each element of array:
+
+    async.each [], (e, cb) ->
+      // do something with element
+      cb()
+    , (err) ->
+      // come here after all elements are processed or one element failed
+      // maybe check for errors
+
 ### eachLimit
+
 ### eachSeries
 ### map
 ### mapLimit
