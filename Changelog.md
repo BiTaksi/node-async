@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.2 (2015-03-02)
+-------------------------------------------------
+- Fixed package structure and declared async module as mandatory.
+- Added more documentation.
+- Fixed typo in documentation.
+
 Version 0.1.1 (2015-02-27)
 -------------------------------------------------
 - Restructured names to adapt default async style.
