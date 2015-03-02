@@ -30,11 +30,12 @@
   "directories": {
     "lib": "./lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "async": "0.9.x"
+  },
   "devDependencies": {
     "alinex-builder": "1.x",
     "alinex-error": "0.2.x",
-    "async": "0.9.x",
     "chai": "2.x"
   },
   "optionalDependencies": {},
