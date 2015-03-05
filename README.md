@@ -9,6 +9,12 @@ will help in structuring in asynchronous programming.
 
 - easy functions
 - makes code more readable
+- helps against the callback hell
+
+This is not a complete new module but more an extension to the
+[async](https://github.com/caolan/async) library by caolan. I decided to
+wrap it instead of fork it to let the development of both parts be more independent.
+So I don't need to update this library to get bugfixes of the core.
 
 It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
 following the code standards defined there.
@@ -33,29 +39,61 @@ module:
 
     async = require 'alinex-async'
 
-Now you may use one of the following methods.
+Now you may use one of the following methods. All relevant functions are
+documented whether they belong to this module directly or to the wrapped
+async class.
 
 
 Collections
 -------------------------------------------------
 
+T
 ### each
 
 Applies the function parallel to each element of array:
 
-    async.each [], (e, cb) ->
-      // do something with element
+    async.each [1..5], (e, cb) ->
+      # do something with element `e`
       cb()
     , (err) ->
-      // come here after all elements are processed or one element failed
-      // maybe check for errors
+      # come here after all elements are processed or one element failed
+      # maybe check for errors
+
+It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.
 
 ### eachLimit
 
+Also run processing of each element in parallel but limit the maximum parallel
+runs to prevent overload. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.
+
+    # set num to the number of parallel runs
+    async.eachLimit [1..5], num, (e, cb) ->
+      # do something with element `e`
+      cb()
+    , (err) ->
+      # come here after all elements are processed or one element failed
+      # maybe check for errors
+
 ### eachSeries
+
+The same as above but do each element one after the other.
+
+    # set num to the number of parallel runs
+    async.eachSeries [1..5], (e, cb) ->
+      # do something with element `e`
+      cb()
+    , (err) ->
+      # come here after all elements are processed or one element failed
+      # maybe check for errors
+
+If one run will return an error all further elements won'T be processed.
+
 ### map
 ### mapLimit
 ### mapSeries
+
 ### filter
 ### reject
 
@@ -66,23 +104,32 @@ Control flow
 ### series
 ### parallel
 ### parallelLimit
+
 ### whilst
 ### doWhilst
 ### until
 ### doUntil
+
 ### forever
+
 ### waterfall
+
 ### applyEach
 ### applyEachSeries
+
 ### queue
 ### priorityQueue
+
 ### retry
 ### times
-###timesSeries
+### timesSeries
 
 
 Function wrapper
 -------------------------------------------------
+
+The following functions are used to wrap functions to give them more functionality.
+You will get a resulting function which can be called any time.
 
 ### once
 
