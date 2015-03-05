@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-async/READMEmd", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3//README.md", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -122,7 +122,7 @@
         <a href="#oncethrow">onceThrow</a>
       </div>
       <div class="heading h3">
-        <a href="#oncettime">onceTtime</a>
+        <a href="#oncetime">onceTime</a>
       </div>
       <div class="heading h2">
         <a href="#license">License</a>
@@ -148,7 +148,13 @@ will help in structuring in asynchronous programming.</p>
 <ul>
 <li>easy functions</li>
 <li>makes code more readable</li>
+<li>helps against the callback hell</li>
 </ul>
+
+<p>This is not a complete new module but more an extension to the
+<a href="https://github.com/caolan/async">async</a> library by caolan. I decided to
+wrap it instead of fork it to let the development of both parts be more independent.
+So I don't need to update this library to get bugfixes of the core.</p>
 
 <p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex">Alinex Universe</a>
 following the code standards defined there.</p>
@@ -190,7 +196,9 @@ module:</p>
 
 
 
-<p>Now you may use one of the following methods.</p>
+<p>Now you may use one of the following methods. All relevant functions are
+documented whether they belong to this module directly or to the wrapped
+async class.</p>
 
 
 <div class="pilwrap" id="collections">
@@ -201,6 +209,8 @@ module:</p>
 </div>
 
 
+<p>T</p>
+
 
 <div class="pilwrap" id="each">
   <h3>
@@ -209,6 +219,22 @@ module:</p>
   </h3>
 </div>
 
+
+<p>Applies the function parallel to each element of array:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">each</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="err">#</span> <span class="k">do</span> <span class="nx">something</span> <span class="kd">with</span> <span class="nx">element</span> <span class="err">`</span><span class="nx">e</span><span class="err">`</span>
+  <span class="nx">cb</span><span class="p">()</span>
+<span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="err">#</span> <span class="nx">come</span> <span class="nx">here</span> <span class="nx">after</span> <span class="nx">all</span> <span class="nx">elements</span> <span class="nx">are</span> <span class="nx">processed</span> <span class="nx">or</span> <span class="nx">one</span> <span class="nx">element</span> <span class="nx">failed</span>
+  <span class="err">#</span> <span class="nx">maybe</span> <span class="nx">check</span> <span class="k">for</span> <span class="nx">errors</span>
+</code></pre></div>
+
+
+
+<p>It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.</p>
 
 
 <div class="pilwrap" id="eachlimit">
@@ -219,6 +245,22 @@ module:</p>
 </div>
 
 
+<p>Also run processing of each element in parallel but limit the maximum parallel
+runs to prevent overload. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.</p>
+
+
+<div class="highlight"><pre><code><span class="err">#</span> <span class="nx">set</span> <span class="nx">num</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">number</span> <span class="nx">of</span> <span class="nx">parallel</span> <span class="nx">runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="err">#</span> <span class="k">do</span> <span class="nx">something</span> <span class="kd">with</span> <span class="nx">element</span> <span class="err">`</span><span class="nx">e</span><span class="err">`</span>
+  <span class="nx">cb</span><span class="p">()</span>
+<span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="err">#</span> <span class="nx">come</span> <span class="nx">here</span> <span class="nx">after</span> <span class="nx">all</span> <span class="nx">elements</span> <span class="nx">are</span> <span class="nx">processed</span> <span class="nx">or</span> <span class="nx">one</span> <span class="nx">element</span> <span class="nx">failed</span>
+  <span class="err">#</span> <span class="nx">maybe</span> <span class="nx">check</span> <span class="k">for</span> <span class="nx">errors</span>
+</code></pre></div>
+
+
+
 
 <div class="pilwrap" id="eachseries">
   <h3>
@@ -227,6 +269,22 @@ module:</p>
   </h3>
 </div>
 
+
+<p>The same as above but do each element one after the other.</p>
+
+
+<div class="highlight"><pre><code><span class="err">#</span> <span class="nx">set</span> <span class="nx">num</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">number</span> <span class="nx">of</span> <span class="nx">parallel</span> <span class="nx">runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="err">#</span> <span class="k">do</span> <span class="nx">something</span> <span class="kd">with</span> <span class="nx">element</span> <span class="err">`</span><span class="nx">e</span><span class="err">`</span>
+  <span class="nx">cb</span><span class="p">()</span>
+<span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="err">#</span> <span class="nx">come</span> <span class="nx">here</span> <span class="nx">after</span> <span class="nx">all</span> <span class="nx">elements</span> <span class="nx">are</span> <span class="nx">processed</span> <span class="nx">or</span> <span class="nx">one</span> <span class="nx">element</span> <span class="nx">failed</span>
+  <span class="err">#</span> <span class="nx">maybe</span> <span class="nx">check</span> <span class="k">for</span> <span class="nx">errors</span>
+</code></pre></div>
+
+
+
+<p>If one run will return an error all further elements won'T be processed.</p>
 
 
 <div class="pilwrap" id="map">
@@ -435,6 +493,9 @@ module:</p>
 </div>
 
 
+<p>The following functions are used to wrap functions to give them more functionality.
+You will get a resulting function which can be called any time.</p>
+
 
 <div class="pilwrap" id="once">
   <h3>
@@ -534,10 +595,10 @@ do the same.</p>
 
 
 
-<div class="pilwrap" id="oncettime">
+<div class="pilwrap" id="oncetime">
   <h3>
-    <a href="#oncettime" name="oncettime" class="pilcrow">&#182;</a>
-    onceTtime
+    <a href="#oncetime" name="oncetime" class="pilcrow">&#182;</a>
+    onceTime
   </h3>
 </div>
 
