@@ -47,7 +47,6 @@ async class.
 Collections
 -------------------------------------------------
 
-T
 ### each
 
 Applies the function parallel to each element of array:
