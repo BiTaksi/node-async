@@ -26,7 +26,9 @@ Install
 
 To use this module you should install it as any other node modules:
 
-    > npm install alinex-async --save
+``` sh
+npm install alinex-async --save
+```
 
 [![NPM](https://nodei.co/npm/alinex-async.png?downloads=true&stars=true)](https://nodei.co/npm/alinex-async/)
 
@@ -185,7 +187,7 @@ If you call this method multiple times it will throw an exception:
 
 ### onceTime
 
-Only run it once at a time but response all calls with the result:
+Only run it once at a time but respond to all calls with the result:
 
     fn = async.onceTime (cb) ->
       time = process.hrtime()
@@ -200,7 +202,6 @@ simultaneously. But all simultaneous calls will get the same result.
       // will come here exactly after the first call finished (because the
       // second will do so the same time)
       // results here will be the same integer, twice
-
 
 
 License
