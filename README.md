@@ -39,7 +39,9 @@ Usage
 Now it can be used like the normal [async](https://github.com/caolan/async)
 module:
 
-    async = require 'alinex-async'
+``` coffee
+async = require 'alinex-async'
+```
 
 Now you may use one of the following methods. All relevant functions are
 documented whether they belong to this module directly or to the wrapped
@@ -53,12 +55,14 @@ Collections
 
 Applies the function parallel to each element of array:
 
-    async.each [1..5], (e, cb) ->
-      # do something with element `e`
-      cb()
-    , (err) ->
-      # come here after all elements are processed or one element failed
-      # maybe check for errors
+``` coffee
+async.each [1..5], (e, cb) ->
+  # do something with element `e`
+  cb()
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # maybe check for errors
+```
 
 It will immediately skip all runs if any one sends an error back and calls the
 resulting function with the error first occurred.
@@ -69,31 +73,81 @@ Also run processing of each element in parallel but limit the maximum parallel
 runs to prevent overload. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.
 
-    # set num to the number of parallel runs
-    async.eachLimit [1..5], num, (e, cb) ->
-      # do something with element `e`
-      cb()
-    , (err) ->
-      # come here after all elements are processed or one element failed
-      # maybe check for errors
+``` coffee
+# set num to the number of parallel runs
+async.eachLimit [1..5], num, (e, cb) ->
+  # do something with element `e`
+  cb()
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # maybe check for errors
+```
 
 ### eachSeries
 
 The same as above but do each element one after the other.
 
-    # set num to the number of parallel runs
-    async.eachSeries [1..5], (e, cb) ->
-      # do something with element `e`
-      cb()
-    , (err) ->
-      # come here after all elements are processed or one element failed
-      # maybe check for errors
+``` coffee
+# set num to the number of parallel runs
+async.eachSeries [1..5], (e, cb) ->
+  # do something with element `e`
+  cb()
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # maybe check for errors
+```
 
 If one run will return an error all further elements won'T be processed.
 
 ### map
+
+Applies the function parallel to each element of array like each but will return
+an array of the results:
+
+``` coffee
+async.map [1..5], (e, cb) ->
+  # do something with element `e`
+  cb e + 1
+, (err, results) ->
+  # come here after all elements are processed or one element failed
+  # if no failure occurred the results array will have:
+  # [2..6] in this example
+```
+
+It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.
+
 ### mapLimit
+
+Like with map this will give the same results but only run a maximum of limited
+parallel calls. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.
+
+``` coffee
+# set num to the number of parallel runs
+async.mapLimit [1..5], num, (e, cb) ->
+  # do something with element `e`
+  cb e + 1
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # if no failure occurred the results array will have:
+  # [2..6] in this example
+```
+
 ### mapSeries
+
+And this method will run all calls each after the other one in series. But also
+the results array will be the same in the end.
+
+``` coffee
+async.mapSeries [1..5], (e, cb) ->
+  # do something with element `e`
+  cb e + 1
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # if no failure occurred the results array will have:
+  # [2..6] in this example
+```
 
 ### filter
 ### reject
@@ -136,36 +190,44 @@ You will get a resulting function which can be called any time.
 
 The second and later calls will return with the same result:
 
-      fn = async.once (cb) ->
-        time = process.hrtime()
-        setTimeout ->
-          cb null, time[1]
-        , 1000
+``` coffee
+fn = async.once (cb) ->
+  time = process.hrtime()
+  setTimeout ->
+    cb null, time[1]
+  , 1000
+```
 
 Use this to make some initializations which only have to run once but neither
 function may start because it is not done:
 
-      async.parallel [ fn, fn ], (err, results) ->
-        // same as with `once.atime` it will come here exactly after the
-        // first call finished because the second one will get the
-        // result the same time
-        // results here will be the same integer, twice
-        fn (err, result) ->
-          // and this call will return imediately with the previous result
+``` coffee
+async.parallel [ fn, fn ], (err, results) ->
+  # same as with `once.atime` it will come here exactly after the
+  # first call finished because the second one will get the
+  # result the same time
+  # results here will be the same integer, twice
+  fn (err, result) ->
+    # and this call will return imediately with the previous result
+```
 
 ### onceSkip
 
 A function may be wrapped with the once method:
 
-    fn = async.onceSkip (a, b, cb) -> cb null, a + b
+``` coffee
+fn = async.onceSkip (a, b, cb) -> cb null, a + b
+```
 
 And now you can call the function as normal but on the second call it will
 return imediately without running the code:
 
-    fn 2, 3, (err, x) ->
-      // x will now be 5
-      fn 2, 9, (err, x) ->
-        // err will now be set on the second call
+``` coffee
+fn 2, 3, (err, x) ->
+  // x will now be 5
+  fn 2, 9, (err, x) ->
+    // err will now be set on the second call
+```
 
 You may use this helper in case of initialization (wait) there a specific
 method have to run once before any other call can succeed. Or then events
@@ -176,32 +238,40 @@ do the same.
 
 Throw an error if it is called a second time:
 
-    fn = async.onceThrow (a, b, cb) -> cb null, a + b
+``` coffee
+fn = async.onceThrow (a, b, cb) -> cb null, a + b
+```
 
 If you call this method multiple times it will throw an exception:
 
-    fn 2, 3, (err, x) ->
-      // x will now be 5
-      fn 2, 9, (err, x) ->
-        // will neither get there because an exception is thrown above
+``` coffee
+fn 2, 3, (err, x) ->
+  # x will now be 5
+  fn 2, 9, (err, x) ->
+    # will neither get there because an exception is thrown above
+```
 
 ### onceTime
 
 Only run it once at a time but respond to all calls with the result:
 
-    fn = async.onceTime (cb) ->
-      time = process.hrtime()
-      setTimeout ->
-        cb null, time[1]
-      , 1000
+``` coffee
+fn = async.onceTime (cb) ->
+  time = process.hrtime()
+  setTimeout ->
+    cb null, time[1]
+  , 1000
+```
 
 And now you may call it multiple times but it will not run more than once
 simultaneously. But all simultaneous calls will get the same result.
 
-    async.parallel [ fn, fn ], (err, results) ->
-      // will come here exactly after the first call finished (because the
-      // second will do so the same time)
-      // results here will be the same integer, twice
+``` coffee
+async.parallel [ fn, fn ], (err, results) ->
+  # will come here exactly after the first call finished (because the
+  # second will do so the same time)
+  # results here will be the same integer, twice
+```
 
 
 License
