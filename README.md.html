@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3//README.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex//README.md", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -130,7 +130,7 @@
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="docs markdown">
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="docs markdown">
 <div class="pilwrap" id="package%3A%20alinex-async">
   <h1>
     <a href="#package%3A%20alinex-async" name="package%3A%20alinex-async" class="pilcrow">&#182;</a>
@@ -171,7 +171,7 @@ following the code standards defined there.</p>
 <p>To use this module you should install it as any other node modules:</p>
 
 
-<div class="highlight"><pre><code><span class="o">&gt;</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">alinex</span><span class="o">-</span><span class="nx">async</span> <span class="o">--</span><span class="nx">save</span>
+<div class="highlight"><pre><code>npm install alinex-async --save
 </code></pre></div>
 
 
@@ -191,7 +191,7 @@ following the code standards defined there.</p>
 module:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">async</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-async&#39;</span>
+<div class="highlight"><pre><code><span class="nv">async = </span><span class="nx">require</span> <span class="s">&#39;alinex-async&#39;</span>
 </code></pre></div>
 
 
@@ -209,8 +209,6 @@ async class.</p>
 </div>
 
 
-<p>T</p>
-
 
 <div class="pilwrap" id="each">
   <h3>
@@ -223,12 +221,12 @@ async class.</p>
 <p>Applies the function parallel to each element of array:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">each</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="err">#</span> <span class="k">do</span> <span class="nx">something</span> <span class="kd">with</span> <span class="nx">element</span> <span class="err">`</span><span class="nx">e</span><span class="err">`</span>
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">each</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
+  <span class="c1"># do something with element `e`</span>
   <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="err">#</span> <span class="nx">come</span> <span class="nx">here</span> <span class="nx">after</span> <span class="nx">all</span> <span class="nx">elements</span> <span class="nx">are</span> <span class="nx">processed</span> <span class="nx">or</span> <span class="nx">one</span> <span class="nx">element</span> <span class="nx">failed</span>
-  <span class="err">#</span> <span class="nx">maybe</span> <span class="nx">check</span> <span class="k">for</span> <span class="nx">errors</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># maybe check for errors</span>
 </code></pre></div>
 
 
@@ -250,13 +248,13 @@ runs to prevent overload. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.</p>
 
 
-<div class="highlight"><pre><code><span class="err">#</span> <span class="nx">set</span> <span class="nx">num</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">number</span> <span class="nx">of</span> <span class="nx">parallel</span> <span class="nx">runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">eachLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="err">#</span> <span class="k">do</span> <span class="nx">something</span> <span class="kd">with</span> <span class="nx">element</span> <span class="err">`</span><span class="nx">e</span><span class="err">`</span>
+<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(e, cb) -&gt;</span>
+  <span class="c1"># do something with element `e`</span>
   <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="err">#</span> <span class="nx">come</span> <span class="nx">here</span> <span class="nx">after</span> <span class="nx">all</span> <span class="nx">elements</span> <span class="nx">are</span> <span class="nx">processed</span> <span class="nx">or</span> <span class="nx">one</span> <span class="nx">element</span> <span class="nx">failed</span>
-  <span class="err">#</span> <span class="nx">maybe</span> <span class="nx">check</span> <span class="k">for</span> <span class="nx">errors</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># maybe check for errors</span>
 </code></pre></div>
 
 
@@ -273,13 +271,13 @@ rest will wait till any run finishes.</p>
 <p>The same as above but do each element one after the other.</p>
 
 
-<div class="highlight"><pre><code><span class="err">#</span> <span class="nx">set</span> <span class="nx">num</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">number</span> <span class="nx">of</span> <span class="nx">parallel</span> <span class="nx">runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="err">#</span> <span class="k">do</span> <span class="nx">something</span> <span class="kd">with</span> <span class="nx">element</span> <span class="err">`</span><span class="nx">e</span><span class="err">`</span>
+<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
+  <span class="c1"># do something with element `e`</span>
   <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="err">#</span> <span class="nx">come</span> <span class="nx">here</span> <span class="nx">after</span> <span class="nx">all</span> <span class="nx">elements</span> <span class="nx">are</span> <span class="nx">processed</span> <span class="nx">or</span> <span class="nx">one</span> <span class="nx">element</span> <span class="nx">failed</span>
-  <span class="err">#</span> <span class="nx">maybe</span> <span class="nx">check</span> <span class="k">for</span> <span class="nx">errors</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># maybe check for errors</span>
 </code></pre></div>
 
 
@@ -295,6 +293,24 @@ rest will wait till any run finishes.</p>
 </div>
 
 
+<p>Applies the function parallel to each element of array like each but will return
+an array of the results:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">map</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
+  <span class="c1"># do something with element `e`</span>
+  <span class="nx">cb</span> <span class="nx">e</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># [2..6] in this example</span>
+</code></pre></div>
+
+
+
+<p>It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.</p>
+
 
 <div class="pilwrap" id="maplimit">
   <h3>
@@ -304,6 +320,23 @@ rest will wait till any run finishes.</p>
 </div>
 
 
+<p>Like with map this will give the same results but only run a maximum of limited
+parallel calls. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.</p>
+
+
+<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">mapLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(e, cb) -&gt;</span>
+  <span class="c1"># do something with element `e`</span>
+  <span class="nx">cb</span> <span class="nx">e</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># [2..6] in this example</span>
+</code></pre></div>
+
+
+
 
 <div class="pilwrap" id="mapseries">
   <h3>
@@ -311,6 +344,21 @@ rest will wait till any run finishes.</p>
     mapSeries
   </h3>
 </div>
+
+
+<p>And this method will run all calls each after the other one in series. But also
+the results array will be the same in the end.</p>
+
+
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">mapSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
+  <span class="c1"># do something with element `e`</span>
+  <span class="nx">cb</span> <span class="nx">e</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># [2..6] in this example</span>
+</code></pre></div>
+
 
 
 
@@ -508,11 +556,11 @@ You will get a resulting function which can be called any time.</p>
 <p>The second and later calls will return with the same result:</p>
 
 
-<div class="highlight"><pre><code>  <span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
-    <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
-      <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="p">,</span> <span class="mi">1000</span>
+<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="nf">(cb) -&gt;</span>
+  <span class="nv">time = </span><span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
+  <span class="nx">setTimeout</span> <span class="nf">-&gt;</span>
+    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="p">,</span> <span class="mi">1000</span>
 </code></pre></div>
 
 
@@ -521,13 +569,13 @@ You will get a resulting function which can be called any time.</p>
 function may start because it is not done:</p>
 
 
-<div class="highlight"><pre><code>  <span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="c1">// same as with `once.atime` it will come here exactly after the</span>
-    <span class="c1">// first call finished because the second one will get the</span>
-    <span class="c1">// result the same time</span>
-    <span class="c1">// results here will be the same integer, twice</span>
-    <span class="nx">fn</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="o">-&gt;</span>
-      <span class="c1">// and this call will return imediately with the previous result</span>
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="nf">(err, results) -&gt;</span>
+  <span class="c1"># same as with `once.atime` it will come here exactly after the</span>
+  <span class="c1"># first call finished because the second one will get the</span>
+  <span class="c1"># result the same time</span>
+  <span class="c1"># results here will be the same integer, twice</span>
+  <span class="nx">fn</span> <span class="nf">(err, result) -&gt;</span>
+    <span class="c1"># and this call will return imediately with the previous result</span>
 </code></pre></div>
 
 
@@ -544,7 +592,7 @@ function may start because it is not done:</p>
 <p>A function may be wrapped with the once method:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">onceSkip</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceSkip</span> <span class="nf">(a, b, cb) -&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
 </code></pre></div>
 
 
@@ -553,10 +601,10 @@ function may start because it is not done:</p>
 return imediately without running the code:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="c1">// x will now be 5</span>
-  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="c1">// err will now be set on the second call</span>
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
+  <span class="o">//</span> <span class="nx">x</span> <span class="nx">will</span> <span class="nx">now</span> <span class="nx">be</span> <span class="mi">5</span>
+  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
+    <span class="o">//</span> <span class="nx">err</span> <span class="nx">will</span> <span class="nx">now</span> <span class="nx">be</span> <span class="nx">set</span> <span class="kc">on</span> <span class="nx">the</span> <span class="nx">second</span> <span class="nx">call</span>
 </code></pre></div>
 
 
@@ -578,7 +626,7 @@ do the same.</p>
 <p>Throw an error if it is called a second time:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">onceThrow</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceThrow</span> <span class="nf">(a, b, cb) -&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
 </code></pre></div>
 
 
@@ -586,10 +634,10 @@ do the same.</p>
 <p>If you call this method multiple times it will throw an exception:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="c1">// x will now be 5</span>
-  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="c1">// will neither get there because an exception is thrown above</span>
+<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
+  <span class="c1"># x will now be 5</span>
+  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
+    <span class="c1"># will neither get there because an exception is thrown above</span>
 </code></pre></div>
 
 
@@ -603,12 +651,12 @@ do the same.</p>
 </div>
 
 
-<p>Only run it once at a time but response all calls with the result:</p>
+<p>Only run it once at a time but respond to all calls with the result:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="o">=</span> <span class="nx">async</span><span class="p">.</span><span class="nx">onceTime</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="nx">time</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
-  <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
+<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceTime</span> <span class="nf">(cb) -&gt;</span>
+  <span class="nv">time = </span><span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
+  <span class="nx">setTimeout</span> <span class="nf">-&gt;</span>
     <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
   <span class="p">,</span> <span class="mi">1000</span>
 </code></pre></div>
@@ -619,10 +667,10 @@ do the same.</p>
 simultaneously. But all simultaneous calls will get the same result.</p>
 
 
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">-&gt;</span>
-  <span class="c1">// will come here exactly after the first call finished (because the</span>
-  <span class="c1">// second will do so the same time)</span>
-  <span class="c1">// results here will be the same integer, twice</span>
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="nf">(err, results) -&gt;</span>
+  <span class="c1"># will come here exactly after the first call finished (because the</span>
+  <span class="c1"># second will do so the same time)</span>
+  <span class="c1"># results here will be the same integer, twice</span>
 </code></pre></div>
 
 
