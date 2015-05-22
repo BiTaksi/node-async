@@ -31,11 +31,11 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "async": "0.9.x"
+    "async": "1.x"
   },
   "devDependencies": {
     "alinex-builder": "1.x",
-    "alinex-error": "0.2.x",
+    "alinex-error": "1.x",
     "chai": "2.x"
   },
   "optionalDependencies": {},
