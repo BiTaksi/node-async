@@ -4,6 +4,17 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.0 (2015-05-22)
+-------------------------------------------------
+- Added mapOf... methods.
+- Updated core async module to version 1.0.
+- Updated code style and added map...() documentation.
+- Updated documentation.
+- Update documentation structure.
+- Added documentation for each... methods
+- Fixed version.
+- Added information for version 0.1.3
+
 Version 0.1.2 (2015-03-02)
 -------------------------------------------------
 - Fixed package structure and declared async module as mandatory.
