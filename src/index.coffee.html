@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex//src/index.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/a3/node-async/src/indexcoffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -88,6 +88,7 @@
         </td>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">once = </span><span class="nx">require</span> <span class="s">&#39;./once&#39;</span>
+<span class="nv">mapof = </span><span class="nx">require</span> <span class="s">&#39;./mapof&#39;</span>
 
 
 </pre></div>
@@ -105,10 +106,15 @@
         </td>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">module.exports = </span><span class="nx">async</span>
+
 <span class="nv">module.exports.once = </span><span class="nx">once</span><span class="p">.</span><span class="nx">wait</span>
 <span class="nv">module.exports.onceSkip = </span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span>
 <span class="nv">module.exports.onceThrow = </span><span class="nx">once</span><span class="p">.</span><span class="nx">throw</span>
 <span class="nv">module.exports.onceTime = </span><span class="nx">once</span><span class="p">.</span><span class="nx">time</span>
+
+<span class="nv">module.exports.mapOf = </span><span class="nx">mapof</span><span class="p">.</span><span class="nx">mapOf</span>
+<span class="nv">module.exports.mapOfLimit = </span><span class="nx">mapof</span><span class="p">.</span><span class="nx">mapOfLimit</span>
+<span class="nv">module.exports.mapOfSeries = </span><span class="nx">mapof</span><span class="p">.</span><span class="nx">mapOfSeries</span>
 </pre></div>
         </td>
       </tr>

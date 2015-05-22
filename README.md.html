@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex//README.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-async/READMEmd", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -44,6 +44,15 @@
         <a href="#eachseries">eachSeries</a>
       </div>
       <div class="heading h3">
+        <a href="#foreachof">forEachOf</a>
+      </div>
+      <div class="heading h3">
+        <a href="#foreachoflimit">forEachOfLimit</a>
+      </div>
+      <div class="heading h3">
+        <a href="#foreachofseries">forEachOfSeries</a>
+      </div>
+      <div class="heading h3">
         <a href="#map">map</a>
       </div>
       <div class="heading h3">
@@ -51,6 +60,15 @@
       </div>
       <div class="heading h3">
         <a href="#mapseries">mapSeries</a>
+      </div>
+      <div class="heading h3">
+        <a href="#mapof">mapOf</a>
+      </div>
+      <div class="heading h3">
+        <a href="#mapoflimit">mapOfLimit</a>
+      </div>
+      <div class="heading h3">
+        <a href="#mapofseries">mapOfSeries</a>
       </div>
       <div class="heading h3">
         <a href="#filter">filter</a>
@@ -156,6 +174,10 @@ will help in structuring in asynchronous programming.</p>
 wrap it instead of fork it to let the development of both parts be more independent.
 So I don't need to update this library to get bugfixes of the core.</p>
 
+<p>The changes to the core async are:
+- added once... methods
+- added mapOf... methods</p>
+
 <p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex">Alinex Universe</a>
 following the code standards defined there.</p>
 
@@ -221,8 +243,8 @@ async class.</p>
 <p>Applies the function parallel to each element of array:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">each</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
-  <span class="c1"># do something with element `e`</span>
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">each</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
+  <span class="c1"># do something with element `v`</span>
   <span class="nx">cb</span><span class="p">()</span>
 <span class="p">,</span> <span class="nf">(err) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
@@ -249,8 +271,8 @@ rest will wait till any run finishes.</p>
 
 
 <div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">eachLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(e, cb) -&gt;</span>
-  <span class="c1"># do something with element `e`</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, cb) -&gt;</span>
+  <span class="c1"># do something with element `v`</span>
   <span class="nx">cb</span><span class="p">()</span>
 <span class="p">,</span> <span class="nf">(err) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
@@ -272,8 +294,84 @@ rest will wait till any run finishes.</p>
 
 
 <div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
-  <span class="c1"># do something with element `e`</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
+  <span class="c1"># do something with element `v`</span>
+  <span class="nx">cb</span><span class="p">()</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># maybe check for errors</span>
+</code></pre></div>
+
+
+
+<p>If one run will return an error all further elements won'T be processed.</p>
+
+
+<div class="pilwrap" id="foreachof">
+  <h3>
+    <a href="#foreachof" name="foreachof" class="pilcrow">&#182;</a>
+    forEachOf
+  </h3>
+</div>
+
+
+<p>Like <a href="#each">each</a>, except that it iterates over objects, and passes the key as
+the second argument to the iterator.</p>
+
+
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">forEachOf</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
+  <span class="c1"># do something with element `k: v`</span>
+  <span class="nx">cb</span><span class="p">()</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># maybe check for errors</span>
+</code></pre></div>
+
+
+
+<p>It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.</p>
+
+
+<div class="pilwrap" id="foreachoflimit">
+  <h3>
+    <a href="#foreachoflimit" name="foreachoflimit" class="pilcrow">&#182;</a>
+    forEachOfLimit
+  </h3>
+</div>
+
+
+<p>Also run processing of forEachOf element in parallel but limit the maximum parallel
+runs to prevent overload. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.</p>
+
+
+<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">forEachOfLimit</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
+  <span class="c1"># do something with element `k: v`</span>
+  <span class="nx">cb</span><span class="p">()</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># maybe check for errors</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="foreachofseries">
+  <h3>
+    <a href="#foreachofseries" name="foreachofseries" class="pilcrow">&#182;</a>
+    forEachOfSeries
+  </h3>
+</div>
+
+
+<p>The same as above but do forEachOf element one after the other.</p>
+
+
+<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">forEachOfSeries</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
+  <span class="c1"># do something with element `k: v`</span>
   <span class="nx">cb</span><span class="p">()</span>
 <span class="p">,</span> <span class="nf">(err) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
@@ -297,9 +395,9 @@ rest will wait till any run finishes.</p>
 an array of the results:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">map</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
-  <span class="c1"># do something with element `e`</span>
-  <span class="nx">cb</span> <span class="nx">e</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">map</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
+  <span class="c1"># do something with element `v`</span>
+  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
   <span class="c1"># if no failure occurred the results array will have:</span>
@@ -326,9 +424,9 @@ rest will wait till any run finishes.</p>
 
 
 <div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">mapLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(e, cb) -&gt;</span>
-  <span class="c1"># do something with element `e`</span>
-  <span class="nx">cb</span> <span class="nx">e</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">mapLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, cb) -&gt;</span>
+  <span class="c1"># do something with element `v`</span>
+  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="p">,</span> <span class="nf">(err) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
   <span class="c1"># if no failure occurred the results array will have:</span>
@@ -350,13 +448,93 @@ rest will wait till any run finishes.</p>
 the results array will be the same in the end.</p>
 
 
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">mapSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(e, cb) -&gt;</span>
-  <span class="c1"># do something with element `e`</span>
-  <span class="nx">cb</span> <span class="nx">e</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">mapSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
+  <span class="c1"># do something with element `v`</span>
+  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="p">,</span> <span class="nf">(err) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
   <span class="c1"># if no failure occurred the results array will have:</span>
   <span class="c1"># [2..6] in this example</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="mapof">
+  <h3>
+    <a href="#mapof" name="mapof" class="pilcrow">&#182;</a>
+    mapOf
+  </h3>
+</div>
+
+
+<p>Like <a href="#map">map</a>, except that it iterates over objects, and passes the key as
+the second argument to the iterator.</p>
+
+
+<div class="highlight"><pre><code><span class="nv">obj = </span><span class="p">{</span><span class="nx">one</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">two</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">three</span><span class="o">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">mapOf</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
+  <span class="c1"># do something with element `k: v`</span>
+  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># if no failure occurred the results object will have:</span>
+  <span class="c1"># {one:2, two:3, three:4} in this example</span>
+</code></pre></div>
+
+
+
+<p>It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.</p>
+
+
+<div class="pilwrap" id="mapoflimit">
+  <h3>
+    <a href="#mapoflimit" name="mapoflimit" class="pilcrow">&#182;</a>
+    mapOfLimit
+  </h3>
+</div>
+
+
+<p>Like with map this will give the same results but only run a maximum of limited
+parallel calls. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.</p>
+
+
+<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
+<span class="nv">obj = </span><span class="p">{</span><span class="nx">one</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">two</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">three</span><span class="o">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">mapOfLimit</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
+  <span class="c1"># do something with element `k: v`</span>
+  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># {one:2, two:3, three:4} in this example</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="mapofseries">
+  <h3>
+    <a href="#mapofseries" name="mapofseries" class="pilcrow">&#182;</a>
+    mapOfSeries
+  </h3>
+</div>
+
+
+<p>And this method will run all calls each after the other one in series. But also
+the results array will be the same in the end.</p>
+
+
+<div class="highlight"><pre><code><span class="nv">obj = </span><span class="p">{</span><span class="nx">one</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">two</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">three</span><span class="o">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">async</span><span class="p">.</span><span class="nx">mapOfSeries</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
+  <span class="c1"># do something with element `k: v`</span>
+  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+  <span class="c1"># come here after all elements are processed or one element failed</span>
+  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># {one:2, two:3, three:4} in this example</span>
 </code></pre></div>
 
 
