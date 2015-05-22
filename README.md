@@ -17,11 +17,14 @@ wrap it instead of fork it to let the development of both parts be more independ
 So I don't need to update this library to get bugfixes of the core.
 
 The changes to the core async are:
+
 - added once... methods
 - added mapOf... methods
 
 It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
 following the code standards defined there.
+
+Also see the last [changes](Changelog.md).
 
 
 
