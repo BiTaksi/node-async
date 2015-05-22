@@ -16,6 +16,10 @@ This is not a complete new module but more an extension to the
 wrap it instead of fork it to let the development of both parts be more independent.
 So I don't need to update this library to get bugfixes of the core.
 
+The changes to the core async are:
+- added once... methods
+- added mapOf... methods
+
 It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
 following the code standards defined there.
 
@@ -56,8 +60,8 @@ Collections
 Applies the function parallel to each element of array:
 
 ``` coffee
-async.each [1..5], (e, cb) ->
-  # do something with element `e`
+async.each [1..5], (v, cb) ->
+  # do something with element `v`
   cb()
 , (err) ->
   # come here after all elements are processed or one element failed
@@ -75,8 +79,8 @@ rest will wait till any run finishes.
 
 ``` coffee
 # set num to the number of parallel runs
-async.eachLimit [1..5], num, (e, cb) ->
-  # do something with element `e`
+async.eachLimit [1..5], num, (v, cb) ->
+  # do something with element `v`
   cb()
 , (err) ->
   # come here after all elements are processed or one element failed
@@ -89,8 +93,57 @@ The same as above but do each element one after the other.
 
 ``` coffee
 # set num to the number of parallel runs
-async.eachSeries [1..5], (e, cb) ->
-  # do something with element `e`
+async.eachSeries [1..5], (v, cb) ->
+  # do something with element `v`
+  cb()
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # maybe check for errors
+```
+
+If one run will return an error all further elements won'T be processed.
+
+### forEachOf
+
+Like [each](#each), except that it iterates over objects, and passes the key as
+the second argument to the iterator.
+
+``` coffee
+async.forEachOf obj, (v, k, cb) ->
+  # do something with element `k: v`
+  cb()
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # maybe check for errors
+```
+
+It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.
+
+### forEachOfLimit
+
+Also run processing of forEachOf element in parallel but limit the maximum parallel
+runs to prevent overload. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.
+
+``` coffee
+# set num to the number of parallel runs
+async.forEachOfLimit obj, num, (v, k, cb) ->
+  # do something with element `k: v`
+  cb()
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # maybe check for errors
+```
+
+### forEachOfSeries
+
+The same as above but do forEachOf element one after the other.
+
+``` coffee
+# set num to the number of parallel runs
+async.forEachOfSeries obj, (v, k, cb) ->
+  # do something with element `k: v`
   cb()
 , (err) ->
   # come here after all elements are processed or one element failed
@@ -105,9 +158,9 @@ Applies the function parallel to each element of array like each but will return
 an array of the results:
 
 ``` coffee
-async.map [1..5], (e, cb) ->
-  # do something with element `e`
-  cb e + 1
+async.map [1..5], (v, cb) ->
+  # do something with element `v`
+  cb null, v + 1
 , (err, results) ->
   # come here after all elements are processed or one element failed
   # if no failure occurred the results array will have:
@@ -125,9 +178,9 @@ rest will wait till any run finishes.
 
 ``` coffee
 # set num to the number of parallel runs
-async.mapLimit [1..5], num, (e, cb) ->
-  # do something with element `e`
-  cb e + 1
+async.mapLimit [1..5], num, (v, cb) ->
+  # do something with element `v`
+  cb null, v + 1
 , (err) ->
   # come here after all elements are processed or one element failed
   # if no failure occurred the results array will have:
@@ -140,13 +193,66 @@ And this method will run all calls each after the other one in series. But also
 the results array will be the same in the end.
 
 ``` coffee
-async.mapSeries [1..5], (e, cb) ->
-  # do something with element `e`
-  cb e + 1
+async.mapSeries [1..5], (v, cb) ->
+  # do something with element `v`
+  cb null, v + 1
 , (err) ->
   # come here after all elements are processed or one element failed
   # if no failure occurred the results array will have:
   # [2..6] in this example
+```
+
+### mapOf
+
+Like [map](#map), except that it iterates over objects, and passes the key as
+the second argument to the iterator.
+
+``` coffee
+obj = {one:1, two:2, three:3}
+async.mapOf obj, (v, k, cb) ->
+  # do something with element `k: v`
+  cb null, v + 1
+, (err, results) ->
+  # come here after all elements are processed or one element failed
+  # if no failure occurred the results object will have:
+  # {one:2, two:3, three:4} in this example
+```
+
+It will immediately skip all runs if any one sends an error back and calls the
+resulting function with the error first occurred.
+
+### mapOfLimit
+
+Like with map this will give the same results but only run a maximum of limited
+parallel calls. If the maximum number of parallel runs is reached the
+rest will wait till any run finishes.
+
+``` coffee
+# set num to the number of parallel runs
+obj = {one:1, two:2, three:3}
+async.mapOfLimit obj, num, (v, k, cb) ->
+  # do something with element `k: v`
+  cb null, v + 1
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # if no failure occurred the results array will have:
+  # {one:2, two:3, three:4} in this example
+```
+
+### mapOfSeries
+
+And this method will run all calls each after the other one in series. But also
+the results array will be the same in the end.
+
+``` coffee
+obj = {one:1, two:2, three:3}
+async.mapOfSeries obj, (v, k, cb) ->
+  # do something with element `k: v`
+  cb null, v + 1
+, (err) ->
+  # come here after all elements are processed or one element failed
+  # if no failure occurred the results array will have:
+  # {one:2, two:3, three:4} in this example
 ```
 
 ### filter
