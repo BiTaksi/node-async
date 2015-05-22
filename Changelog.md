@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.1 (2015-05-22)
+-------------------------------------------------
+- Added tests for mapOfSeries and mapOfLimit.
+- Optimized documentation.
+
 Version 0.2.0 (2015-05-22)
 -------------------------------------------------
 - Added mapOf... methods.
