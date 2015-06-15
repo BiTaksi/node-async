@@ -215,9 +215,9 @@ obj = {one:1, two:2, three:3}
 async.mapOf obj, (v, k, cb) ->
   # do something with element `k: v`
   cb null, v + 1
-, (err, results) ->
+, (err, result) ->
   # come here after all elements are processed or one element failed
-  # if no failure occurred the results object will have:
+  # if no failure occurred the result object will have:
   # {one:2, two:3, three:4} in this example
 ```
 
@@ -236,9 +236,9 @@ obj = {one:1, two:2, three:3}
 async.mapOfLimit obj, num, (v, k, cb) ->
   # do something with element `k: v`
   cb null, v + 1
-, (err) ->
+, (err, result) ->
   # come here after all elements are processed or one element failed
-  # if no failure occurred the results array will have:
+  # if no failure occurred the result object will have:
   # {one:2, two:3, three:4} in this example
 ```
 
@@ -252,9 +252,9 @@ obj = {one:1, two:2, three:3}
 async.mapOfSeries obj, (v, k, cb) ->
   # do something with element `k: v`
   cb null, v + 1
-, (err) ->
+, (err, result) ->
   # come here after all elements are processed or one element failed
-  # if no failure occurred the results array will have:
+  # if no failure occurred the result object will have:
   # {one:2, two:3, three:4} in this example
 ```
 
