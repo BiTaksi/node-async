@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-async/READMEmd", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-async/README.md", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -15,7 +15,17 @@
   <link rel="stylesheet" href="goToLine.css" />
 </head>
 <body>
-  <div id="sidebar_wrapper">
+  <nav>
+<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='http://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='http://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="lllogo" src="http://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog.html" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
+  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
       <span class="tree">Files</span>
       <span class="headings">Headings</span>
@@ -158,6 +168,7 @@
 
 
 <p><a href="https://travis-ci.org/alinex/node-async"><img src="https://travis-ci.org/alinex/node-async.svg?branch=master" alt="Build Status" title="" /></a>
+<a href="https://coveralls.io/r/alinex/node-async"><img src="https://coveralls.io/repos/alinex/node-async/badge.svg" alt="Coverage Status" title="" /></a>
 <a href="https://gemnasium.com/alinex/node-async"><img src="https://gemnasium.com/alinex/node-async.png" alt="Dependency Status" title="" /></a></p>
 
 <p>This package will extend the async module with more useful functions. The package
@@ -481,9 +492,9 @@ the second argument to the iterator.</p>
 <span class="nx">async</span><span class="p">.</span><span class="nx">mapOf</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
   <span class="c1"># do something with element `k: v`</span>
   <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
+<span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the results object will have:</span>
+  <span class="c1"># if no failure occurred the result object will have:</span>
   <span class="c1"># {one:2, two:3, three:4} in this example</span>
 </code></pre></div>
 
@@ -511,9 +522,9 @@ rest will wait till any run finishes.</p>
 <span class="nx">async</span><span class="p">.</span><span class="nx">mapOfLimit</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
   <span class="c1"># do something with element `k: v`</span>
   <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+<span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># if no failure occurred the result object will have:</span>
   <span class="c1"># {one:2, two:3, three:4} in this example</span>
 </code></pre></div>
 
@@ -536,9 +547,9 @@ the results array will be the same in the end.</p>
 <span class="nx">async</span><span class="p">.</span><span class="nx">mapOfSeries</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
   <span class="c1"># do something with element `k: v`</span>
   <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
+<span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
   <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the results array will have:</span>
+  <span class="c1"># if no failure occurred the result object will have:</span>
   <span class="c1"># {one:2, two:3, three:4} in this example</span>
 </code></pre></div>
 
