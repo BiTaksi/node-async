@@ -87,3 +87,26 @@ describe "mapOf", ->
       , (err, results) ->
         expect(err, 'error').to.exist
         cb()
+
+  describe "no object", ->
+
+    it "should fail for mapOf", (cb) ->
+      async.mapOf 'no object', (v, k, cb) ->
+        cb()
+      , (err, results) ->
+        expect(err, 'error').to.exist
+        cb()
+
+    it "should fail for mapOfLimit", (cb) ->
+      async.mapOfLimit 'no object', 5, (v, k, cb) ->
+        cb()
+      , (err, results) ->
+        expect(err, 'error').to.exist
+        cb()
+
+    it "should fail for mapOfSeries", (cb) ->
+      async.mapOfSeries 'no object', (v, k, cb) ->
+        cb()
+      , (err, results) ->
+        expect(err, 'error').to.exist
+        cb()

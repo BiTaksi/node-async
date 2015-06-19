@@ -120,3 +120,21 @@ describe "once", ->
         expect(err, 'error').to.not.exist
         expect(results[0], 'different result').to.not.equal results[1]
         done()
+
+  describe "no function", ->
+
+    it "should fail for once", (done) ->
+      expect( -> async.once 'test' ).to.throw Error
+      done()
+
+    it "should fail for onceThrow", (done) ->
+      expect( -> async.onceThrow 'test' ).to.throw Error
+      done()
+
+    it "should fail for onceSkip", (done) ->
+      expect( -> async.onceSkip 'test' ).to.throw Error
+      done()
+
+    it "should fail for onceTime", (done) ->
+      expect( -> async.onceTime 'test' ).to.throw Error
+      done()
