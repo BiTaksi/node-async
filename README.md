@@ -22,23 +22,31 @@ The changes to the core async are:
 - added once... methods
 - added mapOf... methods
 
-It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
-following the code standards defined there.
-
-Also see the last [changes](Changelog.md).
-
+> It is one of the modules of the [Alinex Universe](http://alinex.github.io/code.html)
+> following the code standards defined in the [General Docs](http://alinex.github.io/node-alinex).
 
 
 Install
 -------------------------------------------------
 
-To use this module you should install it as any other node modules:
+[![NPM](https://nodei.co/npm/alinex-async.png?downloads=true&downloadRank=true&stars=true)
+ ![Downloads](https://nodei.co/npm-dl/alinex-async.png?months=9&height=3)
+](https://www.npmjs.com/package/alinex-async)
+
+The easiest way is to let npm add the module directly to your modules
+(from within you node modules directory):
 
 ``` sh
 npm install alinex-async --save
 ```
 
-[![NPM](https://nodei.co/npm/alinex-async.png?downloads=true&stars=true)](https://nodei.co/npm/alinex-async/)
+And update it to the latest version later:
+
+``` sh
+npm update alinex-async --save
+```
+
+Always have a look at the latest [changes](Changelog.md).
 
 
 Usage
