@@ -68,6 +68,7 @@ also if called multiple times.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre><span class="nv">debug = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)(</span><span class="s">&#39;async:once&#39;</span><span class="p">)</span>
 <span class="nv">chalk = </span><span class="nx">require</span> <span class="s">&#39;chalk&#39;</span>
+<span class="nv">util = </span><span class="nx">require</span> <span class="s">&#39;util&#39;</span>
 
 <span class="nv">functionId = </span><span class="mi">0</span>
 
@@ -88,7 +89,10 @@ also if called multiple times.</p>
 <p>If it is called a second time an error will be thrown.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">module.exports.throw = </span><span class="nf">(func, context) -&gt;</span>
+<span class="nv">module.exports.throw = </span><span class="nf">(context, func) -&gt;</span>
+  <span class="k">unless</span> <span class="nx">func</span>
+    <span class="nv">func = </span><span class="nx">context</span>
+    <span class="nv">context = </span><span class="kc">null</span>
 
 </pre></div>
         </td>
@@ -118,6 +122,8 @@ also if called multiple times.</p>
   <span class="nv">called = </span><span class="kc">false</span>
   <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
   <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="k">if</span> <span class="nx">context</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: using specific context&quot;</span>
 
 </pre></div>
         </td>
@@ -180,7 +186,10 @@ also if called multiple times.</p>
 You may use the error or not.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">module.exports.skip = </span><span class="nf">(func, context) -&gt;</span>
+<span class="nv">module.exports.skip = </span><span class="nf">(context, func) -&gt;</span>
+  <span class="k">unless</span> <span class="nx">func</span>
+    <span class="nv">func = </span><span class="nx">context</span>
+    <span class="nv">context = </span><span class="kc">null</span>
 
 </pre></div>
         </td>
@@ -210,6 +219,8 @@ You may use the error or not.</p>
   <span class="nv">called = </span><span class="kc">false</span>
   <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
   <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="k">if</span> <span class="nx">context</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: using specific context&quot;</span>
 
 </pre></div>
         </td>
@@ -287,7 +298,10 @@ You may use the error or not.</p>
 has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">module.exports.time = </span><span class="nf">(func, context) -&gt;</span>
+<span class="nv">module.exports.time = </span><span class="nf">(context, func) -&gt;</span>
+  <span class="k">unless</span> <span class="nx">func</span>
+    <span class="nv">func = </span><span class="nx">context</span>
+    <span class="nv">context = </span><span class="kc">null</span>
 
 </pre></div>
         </td>
@@ -319,6 +333,8 @@ has finished. This makes only sense with asynchronous functions.</p>
   <span class="nv">next = </span><span class="p">[]</span> <span class="c1"># list for the next round</span>
   <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
   <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="k">if</span> <span class="nx">context</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: using specific context&quot;</span>
 
 </pre></div>
         </td>
@@ -379,7 +395,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight"><div class="highlight"><pre>
     <span class="nv">started = </span><span class="kc">true</span>
     <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
-      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: done&quot;</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: done with result </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">arguments</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -409,7 +425,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight"><div class="highlight"><pre>
       <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">work</span>
         <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: inform listener&quot;</span>
-        <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">arguments</span>
+        <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span>
 
 </pre></div>
         </td>
@@ -459,7 +475,10 @@ has finished. This makes only sense with asynchronous functions.</p>
 has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">module.exports.wait = </span><span class="nf">(func, context) -&gt;</span>
+<span class="nv">module.exports.wait = </span><span class="nf">(context, func) -&gt;</span>
+  <span class="k">unless</span> <span class="nx">func</span>
+    <span class="nv">func = </span><span class="nx">context</span>
+    <span class="nv">context = </span><span class="kc">null</span>
 
 </pre></div>
         </td>
@@ -492,6 +511,8 @@ has finished. This makes only sense with asynchronous functions.</p>
   <span class="nv">results = </span><span class="p">[]</span>    <span class="c1"># the results stored for further calls</span>
   <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
   <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="k">if</span> <span class="nx">context</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: using specific context&quot;</span>
 
 </pre></div>
         </td>
@@ -533,7 +554,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight"><div class="highlight"><pre>
     <span class="k">if</span> <span class="nx">done</span>
       <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called again -&gt; send result&quot;</span>
-      <span class="k">return</span> <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span>
+      <span class="k">return</span> <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">results</span>
 
 </pre></div>
         </td>
@@ -593,7 +614,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight"><div class="highlight"><pre>
       <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">listeners</span>
         <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: inform listener&quot;</span>
-        <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span>
+        <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">results</span>
       <span class="nv">listeners = </span><span class="kc">null</span>
 
 </pre></div>

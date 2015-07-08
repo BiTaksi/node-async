@@ -751,6 +751,21 @@ the results array will be the same in the end.</p>
 <p>The following functions are used to wrap functions to give them more functionality.
 You will get a resulting function which can be called any time.</p>
 
+<p>In all of the following methods you may give an optional context to use as first
+parameter. So to call it from class do so like:</p>
+
+
+<div class="highlight"><pre><code><span class="k">class</span> <span class="o">=</span> <span class="nx">Test</span>
+  <span class="nv">init: </span><span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="k">this</span><span class="p">,</span> <span class="nf">(cb) -&gt;</span>
+    <span class="c1"># method...</span>
+    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">@status</span>
+</code></pre></div>
+
+
+
+<p>That allows your function to access class members and methods. Keep in mind to use
+<code>=&gt;</code> if you use sub functions.</p>
+
 
 <div class="pilwrap" id="once">
   <h3>
