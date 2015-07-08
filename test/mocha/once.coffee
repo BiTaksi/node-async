@@ -98,15 +98,17 @@ describe "once", ->
         expect(x, 'result').to.exist
         done()
 
-    it "should run once with two parallel calls", (done) ->
+    it "should run once with two parallel calls following another one", (done) ->
+      @timeout 5000
       fn = async.onceTime (cb) ->
         time = process.hrtime()
         setTimeout ->
           cb null, time[1]
         , 1000
-      async.parallel [ fn, fn ], (err, results) ->
+      async.parallel [ fn, fn, fn ], (err, results) ->
         expect(err, 'error').to.not.exist
-        expect(results[0], 'same result').to.equal results[1]
+        expect(results[0], 'first lower').to.be.below results[1]
+        expect(results[1], 'others same result').to.equal results[2]
         done()
 
     it "should run twice with two serial calls", (done) ->

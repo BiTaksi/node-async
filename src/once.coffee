@@ -3,6 +3,11 @@
 # This methods will wrap a given function. Afterwards it will only run once
 # also if called multiple times.
 
+debug = require('debug')('async:once')
+chalk = require 'chalk'
+
+functionId = 0
+
 # Throw an error
 # -------------------------------------------------
 # If it is called a second time an error will be thrown.
@@ -55,24 +60,40 @@ module.exports.time = (func, context) ->
   # flags
   started = false # if the function has already started
   listeners = []  # callbacks waiting
+  next = [] # list for the next round
+  func.__id ?= ++functionId
+  debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
   # return wrapper function
   ->
     # get callback parameter
     args = [].slice.call arguments
     cb = args.pop() ? {}
     # add to listeners
-    listeners.push cb
-    return if started
+    if started
+      debug "wrapper ##{func.__id}: called but waiting"
+      next.push cb
+      return
+    else
+      debug "wrapper ##{func.__id}: called"
+      listeners.push cb
     # add the wrapper callback
     started = true
     args.push ->
+      debug "wrapper ##{func.__id}: done"
       # start sending back and reopening method
       started = false
       work = [].slice.call listeners
       listeners = []
       # call all listeners
       for cb in work
+        debug "wrapper ##{func.__id}: inform listener"
         cb.apply null, arguments
+      # rerun if more to do
+      if next.length
+        debug "wrapper ##{func.__id}: restart"
+        listeners = next
+        next = []
+        func.apply context, args
     # run real function
     func.apply context, args
 

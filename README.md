@@ -371,7 +371,11 @@ fn 2, 3, (err, x) ->
 
 ### onceTime
 
-Only run it once at a time but respond to all calls with the result:
+Only run it once at a time, queue following requests and send them the result
+of the next run. All calls get the same result, but then the process is already
+started it will list the following calls for the next round. This assures that
+their result is from the newest data set because you may changed something
+while the first run was already working.
 
 ``` coffee
 fn = async.onceTime (cb) ->
