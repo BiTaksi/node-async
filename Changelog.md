@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.3 (2015-07-08)
+-------------------------------------------------
+- Added and tested support for context in once...().
+
 Version 0.2.2 (2015-07-08)
 -------------------------------------------------
 - Upgraded chai module.
