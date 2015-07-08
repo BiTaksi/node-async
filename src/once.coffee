@@ -5,13 +5,17 @@
 
 debug = require('debug')('async:once')
 chalk = require 'chalk'
+util = require 'util'
 
 functionId = 0
 
 # Throw an error
 # -------------------------------------------------
 # If it is called a second time an error will be thrown.
-module.exports.throw = (func, context) ->
+module.exports.throw = (context, func) ->
+  unless func
+    func = context
+    context = null
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -19,6 +23,8 @@ module.exports.throw = (func, context) ->
   called = false
   func.__id ?= ++functionId
   debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
+  if context
+    debug "wrapper ##{func.__id}: using specific context"
   # return wrapper function
   ->
     # throw error after first call
@@ -34,7 +40,10 @@ module.exports.throw = (func, context) ->
 # -------------------------------------------------
 # If it is called a second time execution is skipped and an error will be returned.
 # You may use the error or not.
-module.exports.skip = (func, context) ->
+module.exports.skip = (context, func) ->
+  unless func
+    func = context
+    context = null
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -42,6 +51,8 @@ module.exports.skip = (func, context) ->
   called = false
   func.__id ?= ++functionId
   debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
+  if context
+    debug "wrapper ##{func.__id}: using specific context"
   # return wrapper function
   ->
     # get callback parameter
@@ -61,7 +72,10 @@ module.exports.skip = (func, context) ->
 # -------------------------------------------------
 # If it is called a second time it will return only after the first call
 # has finished. This makes only sense with asynchronous functions.
-module.exports.time = (func, context) ->
+module.exports.time = (context, func) ->
+  unless func
+    func = context
+    context = null
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -71,6 +85,8 @@ module.exports.time = (func, context) ->
   next = [] # list for the next round
   func.__id ?= ++functionId
   debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
+  if context
+    debug "wrapper ##{func.__id}: using specific context"
   # return wrapper function
   ->
     # get callback parameter
@@ -87,7 +103,7 @@ module.exports.time = (func, context) ->
     # add the wrapper callback
     started = true
     args.push ->
-      debug "wrapper ##{func.__id}: done"
+      debug "wrapper ##{func.__id}: done with result #{chalk.grey util.inspect arguments}"
       # start sending back and reopening method
       started = false
       work = [].slice.call listeners
@@ -95,7 +111,7 @@ module.exports.time = (func, context) ->
       # call all listeners
       for cb in work
         debug "wrapper ##{func.__id}: inform listener"
-        cb.apply null, arguments
+        cb.apply context, arguments
       # rerun if more to do
       if next.length
         debug "wrapper ##{func.__id}: restart"
@@ -109,7 +125,10 @@ module.exports.time = (func, context) ->
 # -------------------------------------------------
 # If it is called a second time it will return only after the first call
 # has finished. This makes only sense with asynchronous functions.
-module.exports.wait = (func, context) ->
+module.exports.wait = (context, func) ->
+  unless func
+    func = context
+    context = null
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -120,6 +139,8 @@ module.exports.wait = (func, context) ->
   results = []    # the results stored for further calls
   func.__id ?= ++functionId
   debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
+  if context
+    debug "wrapper ##{func.__id}: using specific context"
   # return wrapper function
   ->
     # get callback parameter
@@ -128,7 +149,7 @@ module.exports.wait = (func, context) ->
     # return if already done
     if done
       debug "wrapper ##{func.__id}: called again -> send result"
-      return cb.apply null, results
+      return cb.apply context, results
     # add to listeners
     listeners.push cb
     if started
@@ -144,7 +165,7 @@ module.exports.wait = (func, context) ->
       # call all listeners
       for cb in listeners
         debug "wrapper ##{func.__id}: inform listener"
-        cb.apply null, results
+        cb.apply context, results
       listeners = null
     # run real function
     func.apply context, args

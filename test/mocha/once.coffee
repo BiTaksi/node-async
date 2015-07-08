@@ -1,6 +1,6 @@
 chai = require 'chai'
 expect = chai.expect
-require('alinex-error').install()
+#require('alinex-error').install()
 
 async = require '../../src/index'
 
@@ -40,6 +40,16 @@ describe "once", ->
         expect(results[0], 'different result').to.equal results[1]
         done()
 
+    it "should run in context", (done) ->
+      context = { one: 1 }
+      fn = async.onceTime context, (cb) ->
+        setTimeout =>
+          cb null, @one
+        , 1000
+      fn (err, x) ->
+        expect(x, 'result').to.equal 1
+        done()
+
   describe "onceThrow", ->
 
     it "should call function with return", ->
@@ -59,6 +69,12 @@ describe "once", ->
         x = fn 3, 4
       , 'second call'
       ).to.throw Error
+
+    it "should run in context", ->
+      context = { base: 2 }
+      fn = async.onceThrow context, (b) -> @base + b
+      x = fn 3
+      expect(x, 'result').to.equal 5
 
   describe "onceSkip", ->
 
@@ -86,6 +102,12 @@ describe "once", ->
         fn 2, 3, (x) ->
           expect(x, 'second call').to.be.instanceof Error
 
+    it "should run in context", ->
+      context = { base: 2 }
+      fn = async.onceSkip context, (b) -> @base + b
+      x = fn 3
+      expect(x, 'result').to.equal 5
+
   describe "onceTime", ->
 
     it "should call function with callback", (done) ->
@@ -98,7 +120,7 @@ describe "once", ->
         expect(x, 'result').to.exist
         done()
 
-    it "should run once with two parallel calls following another one", (done) ->
+    it "should run once with parallel calls", (done) ->
       @timeout 5000
       fn = async.onceTime (cb) ->
         time = process.hrtime()
@@ -121,6 +143,16 @@ describe "once", ->
       async.series [ fn, fn ], (err, results) ->
         expect(err, 'error').to.not.exist
         expect(results[0], 'different result').to.not.equal results[1]
+        done()
+
+    it "should run in context", (done) ->
+      context = { one: 1 }
+      fn = async.onceTime context, (cb) ->
+        setTimeout =>
+          cb null, @one
+        , 1000
+      fn (err, x) ->
+        expect(x, 'result').to.equal 1
         done()
 
   describe "no function", ->

@@ -304,6 +304,19 @@ Function wrapper
 The following functions are used to wrap functions to give them more functionality.
 You will get a resulting function which can be called any time.
 
+In all of the following methods you may give an optional context to use as first
+parameter. So to call it from class do so like:
+
+``` coffee
+class = Test
+  init: async.once this, (cb) ->
+    # method...
+    cb null, @status
+```
+
+That allows your function to access class members and methods. Keep in mind to use
+`=>` if you use sub functions.
+
 ### once
 
 The second and later calls will return with the same result:
