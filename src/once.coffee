@@ -17,10 +17,14 @@ module.exports.throw = (func, context) ->
     throw new Error "Argument func is not a function!"
   # flags
   called = false
+  func.__id ?= ++functionId
+  debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
   # return wrapper function
   ->
     # throw error after first call
+    debug "wrapper ##{func.__id}: called"
     if called
+      debug "wrapper ##{func.__id}: called again issuing an error"
       throw new Error "This function should only be called once."
     # run real function
     called = true
@@ -36,15 +40,19 @@ module.exports.skip = (func, context) ->
     throw new Error "Argument func is not a function!"
   # flags
   called = false
+  func.__id ?= ++functionId
+  debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
   # return wrapper function
   ->
     # get callback parameter
     cb = arguments[arguments.length-1]
     # throw error after first call
     if called
+      debug "wrapper ##{func.__id}: skipped because already called"
       err = new Error "This function should only be called once."
       return cb err if typeof cb is 'function'
       return err
+    debug "wrapper ##{func.__id}: called"
     # run real function
     called = true
     func.apply context, arguments
@@ -110,24 +118,33 @@ module.exports.wait = (func, context) ->
   done = false    # if the function has already ended
   listeners = []  # callbacks waiting
   results = []    # the results stored for further calls
+  func.__id ?= ++functionId
+  debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
   # return wrapper function
   ->
     # get callback parameter
     args = [].slice.call arguments
     cb = args.pop() ? {}
     # return if already done
-    return cb.apply null, results if done
+    if done
+      debug "wrapper ##{func.__id}: called again -> send result"
+      return cb.apply null, results
     # add to listeners
     listeners.push cb
-    return if started
+    if started
+      debug "wrapper ##{func.__id}: called again while running"
+      return
     # add the wrapper callback
     started = true
     args.push ->
+      debug "wrapper ##{func.__id}: done"
       # store results
       done = true
       results = [].slice.call arguments
       # call all listeners
-      cb.apply null, results for cb in listeners
+      for cb in listeners
+        debug "wrapper ##{func.__id}: inform listener"
+        cb.apply null, results
       listeners = null
     # run real function
     func.apply context, args
