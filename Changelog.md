@@ -4,6 +4,17 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.2 (2015-07-08)
+-------------------------------------------------
+- Upgraded chai module.
+- Added debugging for all async.once... methods.
+- Fixed onceTime() to run subsequent calls in the next block.
+- Updated insstall documentation.
+- Made badge links npm compatible in documentation.
+- Extended test coverage.
+- Add coveralls.
+- Fixed documentation bug.
+
 Version 0.2.1 (2015-05-22)
 -------------------------------------------------
 - Added tests for mapOfSeries and mapOfLimit.
