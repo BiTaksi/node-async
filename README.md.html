@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-async/README.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-async/READMEmd", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -858,7 +858,11 @@ do the same.</p>
 </div>
 
 
-<p>Only run it once at a time but respond to all calls with the result:</p>
+<p>Only run it once at a time, queue following requests and send them the result
+of the next run. All calls get the same result, but then the process is already
+started it will list the following calls for the next round. This assures that
+their result is from the newest data set because you may changed something
+while the first run was already working.</p>
 
 
 <div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceTime</span> <span class="nf">(cb) -&gt;</span>

@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-async/src/once.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/a3/node-async/src/oncecoffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -66,7 +66,13 @@
 <p>This methods will wrap a given function. Afterwards it will only run once
 also if called multiple times.</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        <td class="code highlight"><div class="highlight"><pre><span class="nv">debug = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)(</span><span class="s">&#39;async:once&#39;</span><span class="p">)</span>
+<span class="nv">chalk = </span><span class="nx">require</span> <span class="s">&#39;chalk&#39;</span>
+
+<span class="nv">functionId = </span><span class="mi">0</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -110,6 +116,8 @@ also if called multiple times.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
   <span class="nv">called = </span><span class="kc">false</span>
+  <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
+  <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -135,7 +143,9 @@ also if called multiple times.</p>
 <p>throw error after first call</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called&quot;</span>
     <span class="k">if</span> <span class="nx">called</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called again issuing an error&quot;</span>
       <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;This function should only be called once.&quot;</span>
 
 </pre></div>
@@ -198,6 +208,8 @@ You may use the error or not.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
   <span class="nv">called = </span><span class="kc">false</span>
+  <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
+  <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -237,9 +249,11 @@ You may use the error or not.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
     <span class="k">if</span> <span class="nx">called</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: skipped because already called&quot;</span>
       <span class="nv">err = </span><span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;This function should only be called once.&quot;</span>
       <span class="k">return</span> <span class="nx">cb</span> <span class="nx">err</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">cb</span> <span class="o">is</span> <span class="s">&#39;function&#39;</span>
       <span class="k">return</span> <span class="nx">err</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called&quot;</span>
 
 </pre></div>
         </td>
@@ -302,6 +316,9 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight"><div class="highlight"><pre>
   <span class="nv">started = </span><span class="kc">false</span> <span class="c1"># if the function has already started</span>
   <span class="nv">listeners = </span><span class="p">[]</span>  <span class="c1"># callbacks waiting</span>
+  <span class="nv">next = </span><span class="p">[]</span> <span class="c1"># list for the next round</span>
+  <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
+  <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -341,8 +358,13 @@ has finished. This makes only sense with asynchronous functions.</p>
 <p>add to listeners</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-    <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
-    <span class="k">return</span> <span class="k">if</span> <span class="nx">started</span>
+    <span class="k">if</span> <span class="nx">started</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called but waiting&quot;</span>
+      <span class="nx">next</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
+      <span class="k">return</span>
+    <span class="k">else</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called&quot;</span>
+      <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
 
 </pre></div>
         </td>
@@ -357,6 +379,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight"><div class="highlight"><pre>
     <span class="nv">started = </span><span class="kc">true</span>
     <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: done&quot;</span>
 
 </pre></div>
         </td>
@@ -385,6 +408,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
       <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">work</span>
+        <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: inform listener&quot;</span>
         <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">arguments</span>
 
 </pre></div>
@@ -394,6 +418,23 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="docs">
 <div class="pilwrap">
   <a class="pilcrow" href="#section-24" id="section-24">&#182;</a>
+</div>
+<p>rerun if more to do</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="k">if</span> <span class="nx">next</span><span class="p">.</span><span class="nx">length</span>
+        <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: restart&quot;</span>
+        <span class="nv">listeners = </span><span class="nx">next</span>
+        <span class="nv">next = </span><span class="p">[]</span>
+        <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">args</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-25" id="section-25">&#182;</a>
 </div>
 <p>run real function</p>
         </td>
@@ -426,7 +467,7 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-26" id="section-26">&#182;</a>
+  <a class="pilcrow" href="#section-27" id="section-27">&#182;</a>
 </div>
 <p>check parameters</p>
         </td>
@@ -440,7 +481,7 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-27" id="section-27">&#182;</a>
+  <a class="pilcrow" href="#section-28" id="section-28">&#182;</a>
 </div>
 <p>flags</p>
         </td>
@@ -449,6 +490,8 @@ has finished. This makes only sense with asynchronous functions.</p>
   <span class="nv">done = </span><span class="kc">false</span>    <span class="c1"># if the function has already ended</span>
   <span class="nv">listeners = </span><span class="p">[]</span>  <span class="c1"># callbacks waiting</span>
   <span class="nv">results = </span><span class="p">[]</span>    <span class="c1"># the results stored for further calls</span>
+  <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
+  <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -456,7 +499,7 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-28" id="section-28">&#182;</a>
+  <a class="pilcrow" href="#section-29" id="section-29">&#182;</a>
 </div>
 <p>return wrapper function</p>
         </td>
@@ -469,7 +512,7 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-29" id="section-29">&#182;</a>
+  <a class="pilcrow" href="#section-30" id="section-30">&#182;</a>
 </div>
 <p>get callback parameter</p>
         </td>
@@ -483,26 +526,14 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-30" id="section-30">&#182;</a>
+  <a class="pilcrow" href="#section-31" id="section-31">&#182;</a>
 </div>
 <p>return if already done</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-    <span class="k">return</span> <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span> <span class="k">if</span> <span class="nx">done</span>
-
-</pre></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-31" id="section-31">&#182;</a>
-</div>
-<p>add to listeners</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
-    <span class="k">return</span> <span class="k">if</span> <span class="nx">started</span>
+    <span class="k">if</span> <span class="nx">done</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called again -&gt; send result&quot;</span>
+      <span class="k">return</span> <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span>
 
 </pre></div>
         </td>
@@ -512,11 +543,13 @@ has finished. This makes only sense with asynchronous functions.</p>
 <div class="pilwrap">
   <a class="pilcrow" href="#section-32" id="section-32">&#182;</a>
 </div>
-<p>add the wrapper callback</p>
+<p>add to listeners</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-    <span class="nv">started = </span><span class="kc">true</span>
-    <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
+    <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span> <span class="nx">cb</span>
+    <span class="k">if</span> <span class="nx">started</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called again while running&quot;</span>
+      <span class="k">return</span>
 
 </pre></div>
         </td>
@@ -525,6 +558,21 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="docs">
 <div class="pilwrap">
   <a class="pilcrow" href="#section-33" id="section-33">&#182;</a>
+</div>
+<p>add the wrapper callback</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="nv">started = </span><span class="kc">true</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
+      <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: done&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-34" id="section-34">&#182;</a>
 </div>
 <p>store results</p>
         </td>
@@ -538,12 +586,14 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-34" id="section-34">&#182;</a>
+  <a class="pilcrow" href="#section-35" id="section-35">&#182;</a>
 </div>
 <p>call all listeners</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-      <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span> <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">listeners</span>
+      <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">listeners</span>
+        <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: inform listener&quot;</span>
+        <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">results</span>
       <span class="nv">listeners = </span><span class="kc">null</span>
 
 </pre></div>
@@ -552,7 +602,7 @@ has finished. This makes only sense with asynchronous functions.</p>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-35" id="section-35">&#182;</a>
+  <a class="pilcrow" href="#section-36" id="section-36">&#182;</a>
 </div>
 <p>run real function</p>
         </td>
