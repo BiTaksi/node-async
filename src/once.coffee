@@ -85,8 +85,8 @@ module.exports.time = (context, func) ->
   next = [] # list for the next round
   func.__id ?= ++functionId
   debug "wrapper ##{func.__id}: created for #{chalk.grey func}"
-  if context
-    debug "wrapper ##{func.__id}: using specific context"
+  if typeof context is 'object' and Object.keys(context).length
+    debug "wrapper ##{func.__id}: using specific context #{chalk.grey util.inspect context}"
   # return wrapper function
   ->
     # get callback parameter

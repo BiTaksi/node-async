@@ -317,6 +317,21 @@ class = Test
 That allows your function to access class members and methods. Keep in mind to use
 `=>` if you use sub functions.
 
+If you use it in `module.exports` then do it as follows:
+
+``` coffee
+module.exports =
+  anyMethod: (cb) ->
+  # and so on
+
+module.exports.init = async.once module.exports, (cb) ->
+  # method...
+  @anyMethod cb
+```
+
+Like you see above you have to declare this method separately so that the `async.once`
+method can access the now already defined module.exports object.
+
 ### once
 
 The second and later calls will return with the same result:
