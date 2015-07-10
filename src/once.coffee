@@ -155,6 +155,7 @@ module.exports.wait = (context, func) ->
     if started
       debug "wrapper ##{func.__id}: called again while running"
       return
+    debug "wrapper ##{func.__id}: called"
     # add the wrapper callback
     started = true
     args.push ->
