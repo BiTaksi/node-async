@@ -766,6 +766,23 @@ parameter. So to call it from class do so like:</p>
 <p>That allows your function to access class members and methods. Keep in mind to use
 <code>=&gt;</code> if you use sub functions.</p>
 
+<p>If you use it in <code>module.exports</code> then do it as follows:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">module.exports =</span>
+  <span class="nv">anyMethod: </span><span class="nf">(cb) -&gt;</span>
+  <span class="c1"># and so on</span>
+
+<span class="nv">module.exports.init = </span><span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nf">(cb) -&gt;</span>
+  <span class="c1"># method...</span>
+  <span class="nx">@anyMethod</span> <span class="nx">cb</span>
+</code></pre></div>
+
+
+
+<p>Like you see above you have to declare this method separately so that the <code>async.once</code>
+method can access the now already defined module.exports object.</p>
+
 
 <div class="pilwrap" id="once">
   <h3>

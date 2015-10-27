@@ -92,7 +92,7 @@ also if called multiple times.</p>
 <span class="nv">module.exports.throw = </span><span class="nf">(context, func) -&gt;</span>
   <span class="k">unless</span> <span class="nx">func</span>
     <span class="nv">func = </span><span class="nx">context</span>
-    <span class="nv">context = </span><span class="kc">null</span>
+    <span class="nv">context = </span><span class="kc">undefined</span>
 
 </pre></div>
         </td>
@@ -189,7 +189,7 @@ You may use the error or not.</p>
 <span class="nv">module.exports.skip = </span><span class="nf">(context, func) -&gt;</span>
   <span class="k">unless</span> <span class="nx">func</span>
     <span class="nv">func = </span><span class="nx">context</span>
-    <span class="nv">context = </span><span class="kc">null</span>
+    <span class="nv">context = </span><span class="kc">undefined</span>
 
 </pre></div>
         </td>
@@ -301,7 +301,7 @@ has finished. This makes only sense with asynchronous functions.</p>
 <span class="nv">module.exports.time = </span><span class="nf">(context, func) -&gt;</span>
   <span class="k">unless</span> <span class="nx">func</span>
     <span class="nv">func = </span><span class="nx">context</span>
-    <span class="nv">context = </span><span class="kc">null</span>
+    <span class="nv">context = </span><span class="kc">undefined</span>
 
 </pre></div>
         </td>
@@ -333,8 +333,8 @@ has finished. This makes only sense with asynchronous functions.</p>
   <span class="nv">next = </span><span class="p">[]</span> <span class="c1"># list for the next round</span>
   <span class="nx">func</span><span class="p">.</span><span class="nx">__id</span> <span class="o">?=</span> <span class="o">++</span><span class="nx">functionId</span>
   <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: created for </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">func</span><span class="si">}</span><span class="s">&quot;</span>
-  <span class="k">if</span> <span class="nx">context</span>
-    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: using specific context&quot;</span>
+  <span class="k">if</span> <span class="k">typeof</span> <span class="nx">context</span> <span class="o">is</span> <span class="s">&#39;object&#39;</span> <span class="o">and</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">context</span><span class="p">).</span><span class="nx">length</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: using specific context </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">context</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -478,7 +478,7 @@ has finished. This makes only sense with asynchronous functions.</p>
 <span class="nv">module.exports.wait = </span><span class="nf">(context, func) -&gt;</span>
   <span class="k">unless</span> <span class="nx">func</span>
     <span class="nv">func = </span><span class="nx">context</span>
-    <span class="nv">context = </span><span class="kc">null</span>
+    <span class="nv">context = </span><span class="kc">undefined</span>
 
 </pre></div>
         </td>
@@ -571,6 +571,7 @@ has finished. This makes only sense with asynchronous functions.</p>
     <span class="k">if</span> <span class="nx">started</span>
       <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called again while running&quot;</span>
       <span class="k">return</span>
+    <span class="nx">debug</span> <span class="s">&quot;wrapper </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: called&quot;</span>
 
 </pre></div>
         </td>
