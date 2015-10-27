@@ -15,7 +15,7 @@ functionId = 0
 module.exports.throw = (context, func) ->
   unless func
     func = context
-    context = null
+    context = undefined
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -43,7 +43,7 @@ module.exports.throw = (context, func) ->
 module.exports.skip = (context, func) ->
   unless func
     func = context
-    context = null
+    context = undefined
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -75,7 +75,7 @@ module.exports.skip = (context, func) ->
 module.exports.time = (context, func) ->
   unless func
     func = context
-    context = null
+    context = undefined
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
@@ -128,7 +128,7 @@ module.exports.time = (context, func) ->
 module.exports.wait = (context, func) ->
   unless func
     func = context
-    context = null
+    context = undefined
   # check parameters
   unless typeof func is 'function'
     throw new Error "Argument func is not a function!"
