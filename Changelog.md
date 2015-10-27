@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.4 (2015-10-27)
+-------------------------------------------------
+- Fixed bug then context is missing.
+- Add missing debug statement.
+- Added description of how to use once...() in module.exports.
+
 Version 0.2.3 (2015-07-08)
 -------------------------------------------------
 - Added and tested support for context in once...().
