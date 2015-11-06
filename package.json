@@ -1,6 +1,6 @@
 {
   "name": "alinex-async",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "An extended version of the async library.",
   "copyright": "Alexander Schilling 2015",
   "private": false,

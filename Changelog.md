@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.5 (2015-11-06)
+-------------------------------------------------
+- Minor fix in test case.
+- Fixed bug in onceTime where subsequent calls are not really once-in-a-time.
+
 Version 0.2.4 (2015-10-27)
 -------------------------------------------------
 - Fixed bug then context is missing.
