@@ -130,7 +130,7 @@ describe "once", ->
       async.parallel [ fn, fn, fn ], (err, results) ->
         expect(err, 'error').to.not.exist
         expect(results[0], 'first lower').to.be.below results[1]
-        expect(results[1], 'others same result').to.equal results[2]
+        expect(results[1], 'others same result').to.be.below results[2]
         done()
 
     it "should run twice with two serial calls", (done) ->
