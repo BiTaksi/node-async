@@ -52,4 +52,3 @@ module.exports.mapOfSeries = (obj, iterator, cb) ->
     for num in [0..keys.length-1]
       map[keys[num]] = results[num]
     cb null, map
-

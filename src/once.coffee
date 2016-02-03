@@ -104,7 +104,8 @@ module.exports.time = (context, func) ->
     started = true
     # add the time callback
     args.push ->
-      debug "time ##{func.__id}: #{chalk.grey idargs} done with result #{chalk.grey util.inspect arguments}"
+      debug "time ##{func.__id}: #{chalk.grey idargs} done with result
+      #{chalk.grey util.inspect arguments}"
       # start sending back and reopening method
       started = false
       work = [].slice.call listeners

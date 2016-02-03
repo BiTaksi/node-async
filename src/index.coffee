@@ -23,4 +23,3 @@ module.exports.onceTime = once.time
 module.exports.mapOf = mapof.mapOf
 module.exports.mapOfLimit = mapof.mapOfLimit
 module.exports.mapOfSeries = mapof.mapOfSeries
-
