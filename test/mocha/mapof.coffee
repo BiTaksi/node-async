@@ -1,5 +1,6 @@
 chai = require 'chai'
 expect = chai.expect
+### eslint-env node, mocha ###
 async = require '../../src/index'
 
 describe "mapOf", ->
@@ -28,7 +29,7 @@ describe "mapOf", ->
       async.mapOf obj, (v, k, cb) ->
         return cb new Error "too large" if v>2
         cb null, v*2
-      , (err, results) ->
+      , (err) ->
         expect(err, 'error').to.exist
         cb()
 
@@ -56,7 +57,7 @@ describe "mapOf", ->
       async.mapOfLimit obj, 2, (v, k, cb) ->
         return cb new Error "too large" if v>2
         cb null, v*2
-      , (err, results) ->
+      , (err) ->
         expect(err, 'error').to.exist
         cb()
 
@@ -84,7 +85,7 @@ describe "mapOf", ->
       async.mapOfSeries obj, (v, k, cb) ->
         return cb new Error "too large" if v>2
         cb null, v*2
-      , (err, results) ->
+      , (err) ->
         expect(err, 'error').to.exist
         cb()
 
@@ -93,20 +94,20 @@ describe "mapOf", ->
     it "should fail for mapOf", (cb) ->
       async.mapOf 'no object', (v, k, cb) ->
         cb()
-      , (err, results) ->
+      , (err) ->
         expect(err, 'error').to.exist
         cb()
 
     it "should fail for mapOfLimit", (cb) ->
       async.mapOfLimit 'no object', 5, (v, k, cb) ->
         cb()
-      , (err, results) ->
+      , (err) ->
         expect(err, 'error').to.exist
         cb()
 
     it "should fail for mapOfSeries", (cb) ->
       async.mapOfSeries 'no object', (v, k, cb) ->
         cb()
-      , (err, results) ->
+      , (err) ->
         expect(err, 'error').to.exist
         cb()

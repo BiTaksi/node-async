@@ -1,6 +1,6 @@
 chai = require 'chai'
 expect = chai.expect
-#require('alinex-error').install()
+### eslint-env node, mocha ###
 
 async = require '../../src/index'
 
@@ -41,7 +41,7 @@ describe "once", ->
         done()
 
     it "should run in context", (done) ->
-      context = { one: 1 }
+      context = {one: 1}
       fn = async.onceTime context, (cb) ->
         setTimeout =>
           cb null, @one
@@ -69,9 +69,10 @@ describe "once", ->
         x = fn 3, 4
       , 'second call'
       ).to.throw Error
+      expect(x).to.exist
 
     it "should run in context", ->
-      context = { base: 2 }
+      context = {base: 2}
       fn = async.onceThrow context, (b) -> @base + b
       x = fn 3
       expect(x, 'result').to.equal 5
@@ -103,7 +104,7 @@ describe "once", ->
           expect(x, 'second call').to.be.instanceof Error
 
     it "should run in context", ->
-      context = { base: 2 }
+      context = {base: 2}
       fn = async.onceSkip context, (b) -> @base + b
       x = fn 3
       expect(x, 'result').to.equal 5
@@ -146,7 +147,7 @@ describe "once", ->
         done()
 
     it "should run in context", (done) ->
-      context = { one: 1 }
+      context = {one: 1}
       fn = async.onceTime context, (cb) ->
         setTimeout =>
           cb null, @one
