@@ -31,14 +31,14 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "async": "1.x",
+    "async": "^1.5.2",
     "chalk": "^1.1.0",
     "debug": "^2.2.0"
   },
   "devDependencies": {
     "alinex-builder": "1.x",
     "alinex-error": "1.x",
-    "chai": "^3.0.0"
+    "chai": "^3.5.0"
   },
   "optionalDependencies": {},
   "engines": {
