@@ -4,6 +4,14 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.0.0 (2016-02-04)
+-------------------------------------------------
+- Upgraded alinex-builder.
+- updated ignore files.
+- Fixed style of test cases.
+- Fixed lint errors in code.
+- Updated meta data of package and travis build versions.
+
 Version 0.2.5 (2015-11-06)
 -------------------------------------------------
 - Minor fix in test case.
