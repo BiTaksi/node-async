@@ -6,13 +6,9 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-async/src/oncecoffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/github/node-async/src/once.coffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-  <script src="../fileSearch.js"></script>
-  <script src="../goToLine.js"></script>
-  <link rel="stylesheet" href="../fileSearch.css" />
-  <link rel="stylesheet" href="../goToLine.css" />
 </head>
 <body>
   <nav>
@@ -396,7 +392,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
     <span class="nx">args</span><span class="p">.</span><span class="nx">push</span> <span class="nf">-&gt;</span>
-      <span class="nx">debug</span> <span class="s">&quot;time </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">idargs</span><span class="si">}</span><span class="s"> done with result </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">arguments</span><span class="si">}</span><span class="s">&quot;</span>
+      <span class="nx">debug</span> <span class="s">&quot;time </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">idargs</span><span class="si">}</span><span class="s"> done with result</span>
 
 </pre></div>
         </td>
@@ -406,12 +402,13 @@ has finished. This makes only sense with asynchronous functions.</p>
 <div class="pilwrap">
   <a class="pilcrow" href="#section-22" id="section-22">&#182;</a>
 </div>
-<p>start sending back and reopening method</p>
+<p>{chalk.grey util.inspect arguments}"
+start sending back and reopening method</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-      <span class="nv">started = </span><span class="kc">false</span>
-      <span class="nv">work = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">listeners</span>
-      <span class="nv">listeners = </span><span class="p">[]</span>
+<span class="s">      started = false</span>
+<span class="s">      work = [].slice.call listeners</span>
+<span class="s">      listeners = []</span>
 
 </pre></div>
         </td>
@@ -424,8 +421,8 @@ has finished. This makes only sense with asynchronous functions.</p>
 <p>call all listeners</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-      <span class="k">for</span> <span class="nx">cb</span> <span class="k">in</span> <span class="nx">work</span>
-        <span class="nx">debug</span> <span class="s">&quot;time </span><span class="err">#</span><span class="si">#{</span><span class="nx">func</span><span class="p">.</span><span class="nx">__id</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">idargs</span><span class="si">}</span><span class="s"> inform listener&quot;</span>
+<span class="s">      for cb in work</span>
+<span class="s">        debug &quot;</span><span class="nx">time</span> <span class="c1">##{func.__id}: #{chalk.grey idargs} inform listener&quot;</span>
         <span class="nx">cb</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">arguments</span>
 
 </pre></div>
