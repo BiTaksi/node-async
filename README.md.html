@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/github/node-async/README.md", defaultSidebar = true;
+    var relativeDir = "";
+    var thisFile = "home/alex/github/node-async/README.md";
+    var defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,916 +39,689 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#package%3A%20alinex-async">Package: alinex-async</a>
+        <a href="#package-alinex-async">Package: alinex-async</a>
       </div>
+
       <div class="heading h2">
         <a href="#install">Install</a>
       </div>
+
       <div class="heading h2">
         <a href="#usage">Usage</a>
       </div>
+
       <div class="heading h2">
         <a href="#collections">Collections</a>
       </div>
+
       <div class="heading h3">
         <a href="#each">each</a>
       </div>
+
       <div class="heading h3">
         <a href="#eachlimit">eachLimit</a>
       </div>
+
       <div class="heading h3">
         <a href="#eachseries">eachSeries</a>
       </div>
+
       <div class="heading h3">
         <a href="#foreachof">forEachOf</a>
       </div>
+
       <div class="heading h3">
         <a href="#foreachoflimit">forEachOfLimit</a>
       </div>
+
       <div class="heading h3">
         <a href="#foreachofseries">forEachOfSeries</a>
       </div>
+
       <div class="heading h3">
         <a href="#map">map</a>
       </div>
+
       <div class="heading h3">
         <a href="#maplimit">mapLimit</a>
       </div>
+
       <div class="heading h3">
         <a href="#mapseries">mapSeries</a>
       </div>
+
       <div class="heading h3">
         <a href="#mapof">mapOf</a>
       </div>
+
       <div class="heading h3">
         <a href="#mapoflimit">mapOfLimit</a>
       </div>
+
       <div class="heading h3">
         <a href="#mapofseries">mapOfSeries</a>
       </div>
+
       <div class="heading h3">
         <a href="#filter">filter</a>
       </div>
+
       <div class="heading h3">
         <a href="#reject">reject</a>
       </div>
+
       <div class="heading h2">
-        <a href="#control%20flow">Control flow</a>
+        <a href="#control-flow">Control flow</a>
       </div>
+
       <div class="heading h3">
         <a href="#series">series</a>
       </div>
+
       <div class="heading h3">
         <a href="#parallel">parallel</a>
       </div>
+
       <div class="heading h3">
         <a href="#parallellimit">parallelLimit</a>
       </div>
+
       <div class="heading h3">
         <a href="#whilst">whilst</a>
       </div>
+
       <div class="heading h3">
         <a href="#dowhilst">doWhilst</a>
       </div>
+
       <div class="heading h3">
         <a href="#until">until</a>
       </div>
+
       <div class="heading h3">
         <a href="#dountil">doUntil</a>
       </div>
+
       <div class="heading h3">
         <a href="#forever">forever</a>
       </div>
+
       <div class="heading h3">
         <a href="#waterfall">waterfall</a>
       </div>
+
       <div class="heading h3">
         <a href="#applyeach">applyEach</a>
       </div>
+
       <div class="heading h3">
         <a href="#applyeachseries">applyEachSeries</a>
       </div>
+
       <div class="heading h3">
         <a href="#queue">queue</a>
       </div>
+
       <div class="heading h3">
         <a href="#priorityqueue">priorityQueue</a>
       </div>
+
       <div class="heading h3">
         <a href="#retry">retry</a>
       </div>
+
       <div class="heading h3">
         <a href="#times">times</a>
       </div>
+
       <div class="heading h3">
         <a href="#timesseries">timesSeries</a>
       </div>
+
       <div class="heading h2">
-        <a href="#function%20wrapper">Function wrapper</a>
+        <a href="#function-wrapper">Function wrapper</a>
       </div>
+
       <div class="heading h3">
         <a href="#once">once</a>
       </div>
+
       <div class="heading h3">
         <a href="#onceskip">onceSkip</a>
       </div>
+
       <div class="heading h3">
         <a href="#oncethrow">onceThrow</a>
       </div>
+
       <div class="heading h3">
         <a href="#oncetime">onceTime</a>
       </div>
+
       <div class="heading h2">
         <a href="#license">License</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="docs markdown">
-<div class="pilwrap" id="package%3A%20alinex-async">
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a>
+    <div class="docs markdown"><div class="pilwrap" id="package-alinex-async">
   <h1>
-    <a href="#package%3A%20alinex-async" name="package%3A%20alinex-async" class="pilcrow">&#182;</a>
-    Package: alinex-async
+    <a href="#package-alinex-async" name="package-alinex-async" class="pilcrow"></a>
+Package: alinex-async
   </h1>
 </div>
-
-
-<p><a href="https://travis-ci.org/alinex/node-async"><img src="https://travis-ci.org/alinex/node-async.svg?branch=master" alt="Build Status" title="" /></a>
-<a href="https://coveralls.io/r/alinex/node-async"><img src="https://coveralls.io/repos/alinex/node-async/badge.svg" alt="Coverage Status" title="" /></a>
-<a href="https://gemnasium.com/alinex/node-async"><img src="https://gemnasium.com/alinex/node-async.png" alt="Dependency Status" title="" /></a></p>
-
+<p><a href="https://travis-ci.org/alinex/node-async"><img src="https://travis-ci.org/alinex/node-async.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/alinex/node-async"><img src="https://coveralls.io/repos/alinex/node-async/badge.svg" alt="Coverage Status"></a>
+<a href="https://gemnasium.com/alinex/node-async"><img src="https://gemnasium.com/alinex/node-async.png" alt="Dependency Status"></a></p>
 <p>This package will extend the async module with more useful functions. The package
 will help in structuring in asynchronous programming.</p>
-
 <ul>
 <li>easy functions</li>
 <li>makes code more readable</li>
 <li>helps against the callback hell</li>
 </ul>
-
 <p>This is not a complete new module but more an extension to the
 <a href="https://github.com/caolan/async">async</a> library by caolan. I decided to
 wrap it instead of fork it to let the development of both parts be more independent.
 So I don't need to update this library to get bugfixes of the core.</p>
-
 <p>The changes to the core async are:</p>
-
 <ul>
 <li>added once... methods</li>
 <li>added mapOf... methods</li>
 </ul>
-
 <blockquote>
-  <p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
-  following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
+<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
+following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
 </blockquote>
-
-
 <div class="pilwrap" id="install">
   <h2>
-    <a href="#install" name="install" class="pilcrow">&#182;</a>
-    Install
+    <a href="#install" name="install" class="pilcrow"></a>
+Install
   </h2>
 </div>
-
-
-<p><a href="https://www.npmjs.com/package/alinex-async"><img src="https://nodei.co/npm/alinex-async.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" title="" />
- <img src="https://nodei.co/npm-dl/alinex-async.png?months=9&amp;height=3" alt="Downloads" title="" />
+<p><a href="https://www.npmjs.com/package/alinex-async"><img src="https://nodei.co/npm/alinex-async.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM">
+<img src="https://nodei.co/npm-dl/alinex-async.png?months=9&amp;height=3" alt="Downloads">
 </a></p>
-
 <p>The easiest way is to let npm add the module directly to your modules
 (from within you node modules directory):</p>
-
-
-<div class="highlight"><pre><code>npm install alinex-async --save
-</code></pre></div>
-
-
-
+<pre><code class="sh">npm install alinex-async --save
+</code></pre>
 <p>And update it to the latest version later:</p>
-
-
-<div class="highlight"><pre><code>npm update alinex-async --save
-</code></pre></div>
-
-
-
-<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
-
-
+<pre><code class="sh">npm update alinex-async --save
+</code></pre>
+<p>Always have a look at the latest <a href="Changelog.md.html.html">changes</a>.</p>
 <div class="pilwrap" id="usage">
   <h2>
-    <a href="#usage" name="usage" class="pilcrow">&#182;</a>
-    Usage
+    <a href="#usage" name="usage" class="pilcrow"></a>
+Usage
   </h2>
 </div>
-
-
 <p>Now it can be used like the normal <a href="https://github.com/caolan/async">async</a>
 module:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">async = </span><span class="nx">require</span> <span class="s">&#39;alinex-async&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">async = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-async'</span>
+</code></pre>
 <p>Now you may use one of the following methods. All relevant functions are
 documented whether they belong to this module directly or to the wrapped
 async class.</p>
-
-
 <div class="pilwrap" id="collections">
   <h2>
-    <a href="#collections" name="collections" class="pilcrow">&#182;</a>
-    Collections
+    <a href="#collections" name="collections" class="pilcrow"></a>
+Collections
   </h2>
 </div>
-
-
-
 <div class="pilwrap" id="each">
   <h3>
-    <a href="#each" name="each" class="pilcrow">&#182;</a>
-    each
+    <a href="#each" name="each" class="pilcrow"></a>
+each
   </h3>
 </div>
-
-
 <p>Applies the function parallel to each element of array:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">each</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
-  <span class="c1"># do something with element `v`</span>
-  <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># maybe check for errors</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">async.each [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>], <span class="hljs-function"><span class="hljs-params">(v, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `v`</span>
+  cb()
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># maybe check for errors</span>
+</code></pre>
 <p>It will immediately skip all runs if any one sends an error back and calls the
 resulting function with the error first occurred.</p>
-
-
 <div class="pilwrap" id="eachlimit">
   <h3>
-    <a href="#eachlimit" name="eachlimit" class="pilcrow">&#182;</a>
-    eachLimit
+    <a href="#eachlimit" name="eachlimit" class="pilcrow"></a>
+eachLimit
   </h3>
 </div>
-
-
 <p>Also run processing of each element in parallel but limit the maximum parallel
 runs to prevent overload. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.</p>
-
-
-<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">eachLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, cb) -&gt;</span>
-  <span class="c1"># do something with element `v`</span>
-  <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># maybe check for errors</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
+async.eachLimit [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>], num, <span class="hljs-function"><span class="hljs-params">(v, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `v`</span>
+  cb()
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># maybe check for errors</span>
+</code></pre>
 <div class="pilwrap" id="eachseries">
   <h3>
-    <a href="#eachseries" name="eachseries" class="pilcrow">&#182;</a>
-    eachSeries
+    <a href="#eachseries" name="eachseries" class="pilcrow"></a>
+eachSeries
   </h3>
 </div>
-
-
 <p>The same as above but do each element one after the other.</p>
-
-
-<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">eachSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
-  <span class="c1"># do something with element `v`</span>
-  <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># maybe check for errors</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
+async.eachSeries [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>], <span class="hljs-function"><span class="hljs-params">(v, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `v`</span>
+  cb()
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># maybe check for errors</span>
+</code></pre>
 <p>If one run will return an error all further elements won'T be processed.</p>
-
-
 <div class="pilwrap" id="foreachof">
   <h3>
-    <a href="#foreachof" name="foreachof" class="pilcrow">&#182;</a>
-    forEachOf
+    <a href="#foreachof" name="foreachof" class="pilcrow"></a>
+forEachOf
   </h3>
 </div>
-
-
-<p>Like <a href="#each">each</a>, except that it iterates over objects, and passes the key as
+<p>Like <a href="#each.html">each</a>, except that it iterates over objects, and passes the key as
 the second argument to the iterator.</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">forEachOf</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
-  <span class="c1"># do something with element `k: v`</span>
-  <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># maybe check for errors</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">async.forEachOf obj, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `k: v`</span>
+  cb()
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># maybe check for errors</span>
+</code></pre>
 <p>It will immediately skip all runs if any one sends an error back and calls the
 resulting function with the error first occurred.</p>
-
-
 <div class="pilwrap" id="foreachoflimit">
   <h3>
-    <a href="#foreachoflimit" name="foreachoflimit" class="pilcrow">&#182;</a>
-    forEachOfLimit
+    <a href="#foreachoflimit" name="foreachoflimit" class="pilcrow"></a>
+forEachOfLimit
   </h3>
 </div>
-
-
 <p>Also run processing of forEachOf element in parallel but limit the maximum parallel
 runs to prevent overload. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.</p>
-
-
-<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">forEachOfLimit</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
-  <span class="c1"># do something with element `k: v`</span>
-  <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># maybe check for errors</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
+async.forEachOfLimit obj, num, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `k: v`</span>
+  cb()
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># maybe check for errors</span>
+</code></pre>
 <div class="pilwrap" id="foreachofseries">
   <h3>
-    <a href="#foreachofseries" name="foreachofseries" class="pilcrow">&#182;</a>
-    forEachOfSeries
+    <a href="#foreachofseries" name="foreachofseries" class="pilcrow"></a>
+forEachOfSeries
   </h3>
 </div>
-
-
 <p>The same as above but do forEachOf element one after the other.</p>
-
-
-<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">forEachOfSeries</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
-  <span class="c1"># do something with element `k: v`</span>
-  <span class="nx">cb</span><span class="p">()</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># maybe check for errors</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
+async.forEachOfSeries obj, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `k: v`</span>
+  cb()
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># maybe check for errors</span>
+</code></pre>
 <p>If one run will return an error all further elements won'T be processed.</p>
-
-
 <div class="pilwrap" id="map">
   <h3>
-    <a href="#map" name="map" class="pilcrow">&#182;</a>
-    map
+    <a href="#map" name="map" class="pilcrow"></a>
+map
   </h3>
 </div>
-
-
 <p>Applies the function parallel to each element of array like each but will return
 an array of the results:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">map</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
-  <span class="c1"># do something with element `v`</span>
-  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the results array will have:</span>
-  <span class="c1"># [2..6] in this example</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">async.map [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>], <span class="hljs-function"><span class="hljs-params">(v, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `v`</span>
+  cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
+, <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># if no failure occurred the results array will have:</span>
+  <span class="hljs-comment"># [2..6] in this example</span>
+</code></pre>
 <p>It will immediately skip all runs if any one sends an error back and calls the
 resulting function with the error first occurred.</p>
-
-
 <div class="pilwrap" id="maplimit">
   <h3>
-    <a href="#maplimit" name="maplimit" class="pilcrow">&#182;</a>
-    mapLimit
+    <a href="#maplimit" name="maplimit" class="pilcrow"></a>
+mapLimit
   </h3>
 </div>
-
-
 <p>Like with map this will give the same results but only run a maximum of limited
 parallel calls. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.</p>
-
-
-<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">mapLimit</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, cb) -&gt;</span>
-  <span class="c1"># do something with element `v`</span>
-  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the results array will have:</span>
-  <span class="c1"># [2..6] in this example</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
+async.mapLimit [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>], num, <span class="hljs-function"><span class="hljs-params">(v, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `v`</span>
+  cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># if no failure occurred the results array will have:</span>
+  <span class="hljs-comment"># [2..6] in this example</span>
+</code></pre>
 <div class="pilwrap" id="mapseries">
   <h3>
-    <a href="#mapseries" name="mapseries" class="pilcrow">&#182;</a>
-    mapSeries
+    <a href="#mapseries" name="mapseries" class="pilcrow"></a>
+mapSeries
   </h3>
 </div>
-
-
 <p>And this method will run all calls each after the other one in series. But also
 the results array will be the same in the end.</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">mapSeries</span> <span class="p">[</span><span class="mi">1</span><span class="p">..</span><span class="mi">5</span><span class="p">],</span> <span class="nf">(v, cb) -&gt;</span>
-  <span class="c1"># do something with element `v`</span>
-  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the results array will have:</span>
-  <span class="c1"># [2..6] in this example</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">async.mapSeries [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>], <span class="hljs-function"><span class="hljs-params">(v, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `v`</span>
+  cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
+, <span class="hljs-function"><span class="hljs-params">(err)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># if no failure occurred the results array will have:</span>
+  <span class="hljs-comment"># [2..6] in this example</span>
+</code></pre>
 <div class="pilwrap" id="mapof">
   <h3>
-    <a href="#mapof" name="mapof" class="pilcrow">&#182;</a>
-    mapOf
+    <a href="#mapof" name="mapof" class="pilcrow"></a>
+mapOf
   </h3>
 </div>
-
-
-<p>Like <a href="#map">map</a>, except that it iterates over objects, and passes the key as
+<p>Like <a href="#map.html">map</a>, except that it iterates over objects, and passes the key as
 the second argument to the iterator.</p>
-
-
-<div class="highlight"><pre><code><span class="nv">obj = </span><span class="p">{</span><span class="nx">one</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">two</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">three</span><span class="o">:</span><span class="mi">3</span><span class="p">}</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">mapOf</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
-  <span class="c1"># do something with element `k: v`</span>
-  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the result object will have:</span>
-  <span class="c1"># {one:2, two:3, three:4} in this example</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">obj = {<span class="hljs-attribute">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attribute">three</span>:<span class="hljs-number">3</span>}
+async.mapOf obj, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `k: v`</span>
+  cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
+, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># if no failure occurred the result object will have:</span>
+  <span class="hljs-comment"># {one:2, two:3, three:4} in this example</span>
+</code></pre>
 <p>It will immediately skip all runs if any one sends an error back and calls the
 resulting function with the error first occurred.</p>
-
-
 <div class="pilwrap" id="mapoflimit">
   <h3>
-    <a href="#mapoflimit" name="mapoflimit" class="pilcrow">&#182;</a>
-    mapOfLimit
+    <a href="#mapoflimit" name="mapoflimit" class="pilcrow"></a>
+mapOfLimit
   </h3>
 </div>
-
-
 <p>Like with map this will give the same results but only run a maximum of limited
 parallel calls. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.</p>
-
-
-<div class="highlight"><pre><code><span class="c1"># set num to the number of parallel runs</span>
-<span class="nv">obj = </span><span class="p">{</span><span class="nx">one</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">two</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">three</span><span class="o">:</span><span class="mi">3</span><span class="p">}</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">mapOfLimit</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">num</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
-  <span class="c1"># do something with element `k: v`</span>
-  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the result object will have:</span>
-  <span class="c1"># {one:2, two:3, three:4} in this example</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
+obj = {<span class="hljs-attribute">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attribute">three</span>:<span class="hljs-number">3</span>}
+async.mapOfLimit obj, num, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `k: v`</span>
+  cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
+, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># if no failure occurred the result object will have:</span>
+  <span class="hljs-comment"># {one:2, two:3, three:4} in this example</span>
+</code></pre>
 <div class="pilwrap" id="mapofseries">
   <h3>
-    <a href="#mapofseries" name="mapofseries" class="pilcrow">&#182;</a>
-    mapOfSeries
+    <a href="#mapofseries" name="mapofseries" class="pilcrow"></a>
+mapOfSeries
   </h3>
 </div>
-
-
 <p>And this method will run all calls each after the other one in series. But also
 the results array will be the same in the end.</p>
-
-
-<div class="highlight"><pre><code><span class="nv">obj = </span><span class="p">{</span><span class="nx">one</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">two</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="nx">three</span><span class="o">:</span><span class="mi">3</span><span class="p">}</span>
-<span class="nx">async</span><span class="p">.</span><span class="nx">mapOfSeries</span> <span class="nx">obj</span><span class="p">,</span> <span class="nf">(v, k, cb) -&gt;</span>
-  <span class="c1"># do something with element `k: v`</span>
-  <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">v</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
-  <span class="c1"># come here after all elements are processed or one element failed</span>
-  <span class="c1"># if no failure occurred the result object will have:</span>
-  <span class="c1"># {one:2, two:3, three:4} in this example</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">obj = {<span class="hljs-attribute">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attribute">three</span>:<span class="hljs-number">3</span>}
+async.mapOfSeries obj, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
+  <span class="hljs-comment"># do something with element `k: v`</span>
+  cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
+, <span class="hljs-function"><span class="hljs-params">(err, result)</span> -&gt;</span>
+  <span class="hljs-comment"># come here after all elements are processed or one element failed</span>
+  <span class="hljs-comment"># if no failure occurred the result object will have:</span>
+  <span class="hljs-comment"># {one:2, two:3, three:4} in this example</span>
+</code></pre>
 <div class="pilwrap" id="filter">
   <h3>
-    <a href="#filter" name="filter" class="pilcrow">&#182;</a>
-    filter
+    <a href="#filter" name="filter" class="pilcrow"></a>
+filter
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="reject">
   <h3>
-    <a href="#reject" name="reject" class="pilcrow">&#182;</a>
-    reject
+    <a href="#reject" name="reject" class="pilcrow"></a>
+reject
   </h3>
 </div>
-
-
-
-<div class="pilwrap" id="control%20flow">
+<div class="pilwrap" id="control-flow">
   <h2>
-    <a href="#control%20flow" name="control%20flow" class="pilcrow">&#182;</a>
-    Control flow
+    <a href="#control-flow" name="control-flow" class="pilcrow"></a>
+Control flow
   </h2>
 </div>
-
-
-
 <div class="pilwrap" id="series">
   <h3>
-    <a href="#series" name="series" class="pilcrow">&#182;</a>
-    series
+    <a href="#series" name="series" class="pilcrow"></a>
+series
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="parallel">
   <h3>
-    <a href="#parallel" name="parallel" class="pilcrow">&#182;</a>
-    parallel
+    <a href="#parallel" name="parallel" class="pilcrow"></a>
+parallel
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="parallellimit">
   <h3>
-    <a href="#parallellimit" name="parallellimit" class="pilcrow">&#182;</a>
-    parallelLimit
+    <a href="#parallellimit" name="parallellimit" class="pilcrow"></a>
+parallelLimit
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="whilst">
   <h3>
-    <a href="#whilst" name="whilst" class="pilcrow">&#182;</a>
-    whilst
+    <a href="#whilst" name="whilst" class="pilcrow"></a>
+whilst
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="dowhilst">
   <h3>
-    <a href="#dowhilst" name="dowhilst" class="pilcrow">&#182;</a>
-    doWhilst
+    <a href="#dowhilst" name="dowhilst" class="pilcrow"></a>
+doWhilst
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="until">
   <h3>
-    <a href="#until" name="until" class="pilcrow">&#182;</a>
-    until
+    <a href="#until" name="until" class="pilcrow"></a>
+until
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="dountil">
   <h3>
-    <a href="#dountil" name="dountil" class="pilcrow">&#182;</a>
-    doUntil
+    <a href="#dountil" name="dountil" class="pilcrow"></a>
+doUntil
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="forever">
   <h3>
-    <a href="#forever" name="forever" class="pilcrow">&#182;</a>
-    forever
+    <a href="#forever" name="forever" class="pilcrow"></a>
+forever
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="waterfall">
   <h3>
-    <a href="#waterfall" name="waterfall" class="pilcrow">&#182;</a>
-    waterfall
+    <a href="#waterfall" name="waterfall" class="pilcrow"></a>
+waterfall
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="applyeach">
   <h3>
-    <a href="#applyeach" name="applyeach" class="pilcrow">&#182;</a>
-    applyEach
+    <a href="#applyeach" name="applyeach" class="pilcrow"></a>
+applyEach
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="applyeachseries">
   <h3>
-    <a href="#applyeachseries" name="applyeachseries" class="pilcrow">&#182;</a>
-    applyEachSeries
+    <a href="#applyeachseries" name="applyeachseries" class="pilcrow"></a>
+applyEachSeries
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="queue">
   <h3>
-    <a href="#queue" name="queue" class="pilcrow">&#182;</a>
-    queue
+    <a href="#queue" name="queue" class="pilcrow"></a>
+queue
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="priorityqueue">
   <h3>
-    <a href="#priorityqueue" name="priorityqueue" class="pilcrow">&#182;</a>
-    priorityQueue
+    <a href="#priorityqueue" name="priorityqueue" class="pilcrow"></a>
+priorityQueue
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="retry">
   <h3>
-    <a href="#retry" name="retry" class="pilcrow">&#182;</a>
-    retry
+    <a href="#retry" name="retry" class="pilcrow"></a>
+retry
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="times">
   <h3>
-    <a href="#times" name="times" class="pilcrow">&#182;</a>
-    times
+    <a href="#times" name="times" class="pilcrow"></a>
+times
   </h3>
 </div>
-
-
-
 <div class="pilwrap" id="timesseries">
   <h3>
-    <a href="#timesseries" name="timesseries" class="pilcrow">&#182;</a>
-    timesSeries
+    <a href="#timesseries" name="timesseries" class="pilcrow"></a>
+timesSeries
   </h3>
 </div>
-
-
-
-<div class="pilwrap" id="function%20wrapper">
+<div class="pilwrap" id="function-wrapper">
   <h2>
-    <a href="#function%20wrapper" name="function%20wrapper" class="pilcrow">&#182;</a>
-    Function wrapper
+    <a href="#function-wrapper" name="function-wrapper" class="pilcrow"></a>
+Function wrapper
   </h2>
 </div>
-
-
 <p>The following functions are used to wrap functions to give them more functionality.
 You will get a resulting function which can be called any time.</p>
-
 <p>In all of the following methods you may give an optional context to use as first
 parameter. So to call it from class do so like:</p>
-
-
-<div class="highlight"><pre><code><span class="k">class</span> <span class="o">=</span> <span class="nx">Test</span>
-  <span class="nv">init: </span><span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="k">this</span><span class="p">,</span> <span class="nf">(cb) -&gt;</span>
-    <span class="c1"># method...</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">@status</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">class = Test
+  init: async.once this, (cb) -&gt;
+    # method...
+    cb null, @status
+</code></pre>
 <p>That allows your function to access class members and methods. Keep in mind to use
 <code>=&gt;</code> if you use sub functions.</p>
-
 <p>If you use it in <code>module.exports</code> then do it as follows:</p>
+<pre><code class="coffee"><span class="hljs-built_in">module</span>.exports =
+  <span class="hljs-attribute">anyMethod</span>: <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
+  <span class="hljs-comment"># and so on</span>
 
-
-<div class="highlight"><pre><code><span class="nv">module.exports =</span>
-  <span class="nv">anyMethod: </span><span class="nf">(cb) -&gt;</span>
-  <span class="c1"># and so on</span>
-
-<span class="nv">module.exports.init = </span><span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nf">(cb) -&gt;</span>
-  <span class="c1"># method...</span>
-  <span class="nx">@anyMethod</span> <span class="nx">cb</span>
-</code></pre></div>
-
-
-
+<span class="hljs-built_in">module</span>.exports.init = async.once <span class="hljs-built_in">module</span>.exports, <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
+  <span class="hljs-comment"># method...</span>
+  <span class="hljs-property">@anyMethod</span> cb
+</code></pre>
 <p>Like you see above you have to declare this method separately so that the <code>async.once</code>
 method can access the now already defined module.exports object.</p>
-
-
 <div class="pilwrap" id="once">
   <h3>
-    <a href="#once" name="once" class="pilcrow">&#182;</a>
-    once
+    <a href="#once" name="once" class="pilcrow"></a>
+once
   </h3>
 </div>
-
-
 <p>The second and later calls will return with the same result:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">once</span> <span class="nf">(cb) -&gt;</span>
-  <span class="nv">time = </span><span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
-  <span class="nx">setTimeout</span> <span class="nf">-&gt;</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-  <span class="p">,</span> <span class="mi">1000</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">fn = async.once (cb) -&gt;
+  time = process.hrtime()
+  setTimeout -&gt;
+    cb <span class="hljs-literal">null</span>, time[<span class="hljs-number">1</span>]
+  , <span class="hljs-number">1000</span>
+</code></pre>
 <p>Use this to make some initializations which only have to run once but neither
 function may start because it is not done:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="nf">(err, results) -&gt;</span>
-  <span class="c1"># same as with `once.atime` it will come here exactly after the</span>
-  <span class="c1"># first call finished because the second one will get the</span>
-  <span class="c1"># result the same time</span>
-  <span class="c1"># results here will be the same integer, twice</span>
-  <span class="nx">fn</span> <span class="nf">(err, result) -&gt;</span>
-    <span class="c1"># and this call will return imediately with the previous result</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">async.parallel [ fn, fn ], <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+  <span class="hljs-comment"># same as with `once.atime` it will come here exactly after the</span>
+  <span class="hljs-comment"># first call finished because the second one will get the</span>
+  <span class="hljs-comment"># result the same time</span>
+  <span class="hljs-comment"># results here will be the same integer, twice</span>
+  fn (err, result) -&gt;
+    <span class="hljs-comment"># and this call will return imediately with the previous result</span>
+</code></pre>
 <div class="pilwrap" id="onceskip">
   <h3>
-    <a href="#onceskip" name="onceskip" class="pilcrow">&#182;</a>
-    onceSkip
+    <a href="#onceskip" name="onceskip" class="pilcrow"></a>
+onceSkip
   </h3>
 </div>
-
-
 <p>A function may be wrapped with the once method:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceSkip</span> <span class="nf">(a, b, cb) -&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">fn = async.onceSkip (a, b, cb) -&gt; cb <span class="hljs-literal">null</span>, a + b
+</code></pre>
 <p>And now you can call the function as normal but on the second call it will
 return imediately without running the code:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
-  <span class="o">//</span> <span class="nx">x</span> <span class="nx">will</span> <span class="nx">now</span> <span class="nx">be</span> <span class="mi">5</span>
-  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
-    <span class="o">//</span> <span class="nx">err</span> <span class="nx">will</span> <span class="nx">now</span> <span class="nx">be</span> <span class="nx">set</span> <span class="kc">on</span> <span class="nx">the</span> <span class="nx">second</span> <span class="nx">call</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+  <span class="hljs-regexp">//</span> x will now be <span class="hljs-number">5</span>
+  fn <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+    <span class="hljs-regexp">//</span> err will now be set <span class="hljs-literal">on</span> the second call
+</code></pre>
 <p>You may use this helper in case of initialization (wait) there a specific
 method have to run once before any other call can succeed. Or then events
 are involved and an error event will trigger the callback and the end event will
 do the same.</p>
-
-
 <div class="pilwrap" id="oncethrow">
   <h3>
-    <a href="#oncethrow" name="oncethrow" class="pilcrow">&#182;</a>
-    onceThrow
+    <a href="#oncethrow" name="oncethrow" class="pilcrow"></a>
+onceThrow
   </h3>
 </div>
-
-
 <p>Throw an error if it is called a second time:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceThrow</span> <span class="nf">(a, b, cb) -&gt;</span> <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">fn = async.onceThrow (a, b, cb) -&gt; cb <span class="hljs-literal">null</span>, a + b
+</code></pre>
 <p>If you call this method multiple times it will throw an exception:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
-  <span class="c1"># x will now be 5</span>
-  <span class="nx">fn</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="nf">(err, x) -&gt;</span>
-    <span class="c1"># will neither get there because an exception is thrown above</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+  <span class="hljs-comment"># x will now be 5</span>
+  fn <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+    <span class="hljs-comment"># will neither get there because an exception is thrown above</span>
+</code></pre>
 <div class="pilwrap" id="oncetime">
   <h3>
-    <a href="#oncetime" name="oncetime" class="pilcrow">&#182;</a>
-    onceTime
+    <a href="#oncetime" name="oncetime" class="pilcrow"></a>
+onceTime
   </h3>
 </div>
-
-
 <p>Only run it once at a time, queue following requests and send them the result
 of the next run. All calls get the same result, but then the process is already
 started it will list the following calls for the next round. This assures that
 their result is from the newest data set because you may changed something
 while the first run was already working.</p>
-
-
-<div class="highlight"><pre><code><span class="nv">fn = </span><span class="nx">async</span><span class="p">.</span><span class="nx">onceTime</span> <span class="nf">(cb) -&gt;</span>
-  <span class="nv">time = </span><span class="nx">process</span><span class="p">.</span><span class="nx">hrtime</span><span class="p">()</span>
-  <span class="nx">setTimeout</span> <span class="nf">-&gt;</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-  <span class="p">,</span> <span class="mi">1000</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">fn = async.onceTime (cb) -&gt;
+  time = process.hrtime()
+  setTimeout -&gt;
+    cb <span class="hljs-literal">null</span>, time[<span class="hljs-number">1</span>]
+  , <span class="hljs-number">1000</span>
+</code></pre>
 <p>And now you may call it multiple times but it will not run more than once
 simultaneously. But all simultaneous calls will get the same result.</p>
-
-
-<div class="highlight"><pre><code><span class="nx">async</span><span class="p">.</span><span class="nx">parallel</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">],</span> <span class="nf">(err, results) -&gt;</span>
-  <span class="c1"># will come here exactly after the first call finished (because the</span>
-  <span class="c1"># second will do so the same time)</span>
-  <span class="c1"># results here will be the same integer, twice</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">async.parallel [ fn, fn ], <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+  <span class="hljs-comment"># will come here exactly after the first call finished (because the</span>
+  <span class="hljs-comment"># second will do so the same time)</span>
+  <span class="hljs-comment"># results here will be the same integer, twice</span>
+</code></pre>
 <div class="pilwrap" id="license">
   <h2>
-    <a href="#license" name="license" class="pilcrow">&#182;</a>
-    License
+    <a href="#license" name="license" class="pilcrow"></a>
+License
   </h2>
 </div>
-
-
 <p>Copyright 2015-2016 Alexander Schilling</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the "License");
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at</p>
-
 <blockquote>
-  <p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 </blockquote>
-
 <p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License.</p></div>
+limitations under the License.</p>
+</div>
   </div>
 </body>
 </html>

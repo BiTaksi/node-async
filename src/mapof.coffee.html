@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/github/node-async/src/mapof.coffee", defaultSidebar = true;
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-async/src/mapof.coffee";
+    var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,233 +39,254 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#helper%20to%20use%20map%20methods%20on%20objects">Helper to use map methods on objects</a>
+        <a href="#helper-to-use-map-methods-on-objects">Helper to use map methods on objects</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="background highlight"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
 <table cellpadding="0" cellspacing="0">
   <tbody>
+    
       <tr>
         <td class="docs">
           <h1>mapof.coffee</h1>
         </td>
         <td class="code highlight"></td>
       </tr>
+    
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-1" id="section-1">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre><span class="nv">async = </span><span class="nx">require</span> <span class="s">&#39;async&#39;</span>
+        <td class="code highlight">
+          <pre class="coffeescript">async = <span class="hljs-built_in">require</span> <span class="hljs-string">'async'</span>
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="helper%20to%20use%20map%20methods%20on%20objects">
+          <div class="pilwrap" id="helper-to-use-map-methods-on-objects">
   <h1>
-    <a href="#helper%20to%20use%20map%20methods%20on%20objects" name="helper%20to%20use%20map%20methods%20on%20objects" class="pilcrow">&#182;</a>
-    Helper to use map methods on objects
+    <a href="#helper-to-use-map-methods-on-objects" name="helper-to-use-map-methods-on-objects" class="pilcrow"></a>
+Helper to use map methods on objects
   </h1>
 </div>
-
-
 <p>This methods will do the same as the map method but works on objects instead
 of arrays.</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-
-<span class="nv">module.exports.mapOf = </span><span class="nf">(obj, iterator, cb) -&gt;</span>
-
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">
+<span class="hljs-built_in">module</span>.exports.mapOf = <span class="hljs-function"><span class="hljs-params">(obj, iterator, cb)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-3" id="section-3">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
 </div>
 <p>check the object</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="k">return</span> <span class="nx">cb</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;mapOf only works on objects&quot;</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">is</span> <span class="s">&#39;object&#39;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-4" id="section-4">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
 </div>
 <p>map over object keys</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">keys = </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span> <span class="nx">obj</span>
-  <span class="nx">async</span><span class="p">.</span><span class="nx">map</span> <span class="nx">keys</span><span class="p">,</span> <span class="nf">(key, cb) -&gt;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  keys = Object.keys obj
+  async.map keys, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-5" id="section-5">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
 </div>
 <p>call iterator with value and key</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nx">iterator</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">cb</span>
-  <span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
-    <span class="k">return</span> <span class="nx">cb</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    iterator obj[key], key, cb
+  , <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-6" id="section-6">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
 </div>
 <p>combine the results into an object again</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nv">map = </span><span class="p">{}</span>
-    <span class="k">for</span> <span class="nx">num</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">..</span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-      <span class="nx">map</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">num</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">results</span><span class="p">[</span><span class="nx">num</span><span class="p">]</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">map</span>
+        <td class="code highlight">
+          <pre class="coffeescript">    map = {}
+    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>.keys.length-<span class="hljs-number">1</span>]
+      map[keys[num]] = results[num]
+    cb <span class="hljs-literal">null</span>, map
 
-<span class="nv">module.exports.mapOfLimit = </span><span class="nf">(obj, limit, iterator, cb) -&gt;</span>
-
-</pre></div>
+<span class="hljs-built_in">module</span>.exports.mapOfLimit = <span class="hljs-function"><span class="hljs-params">(obj, limit, iterator, cb)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-7" id="section-7">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
 </div>
 <p>check the object</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="k">return</span> <span class="nx">cb</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;mapOf only works on objects&quot;</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">is</span> <span class="s">&#39;object&#39;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-8" id="section-8">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
 </div>
 <p>map over object keys</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">keys = </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span> <span class="nx">obj</span>
-  <span class="nx">async</span><span class="p">.</span><span class="nx">mapLimit</span> <span class="nx">keys</span><span class="p">,</span> <span class="nx">limit</span><span class="p">,</span> <span class="nf">(key, cb) -&gt;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  keys = Object.keys obj
+  async.mapLimit keys, limit, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-9" id="section-9">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
 </div>
 <p>call iterator with value and key</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nx">iterator</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">cb</span>
-  <span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
-    <span class="k">return</span> <span class="nx">cb</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    iterator obj[key], key, cb
+  , <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-10" id="section-10">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
 </div>
 <p>combine the results into an object again</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nv">map = </span><span class="p">{}</span>
-    <span class="k">for</span> <span class="nx">num</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">..</span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-      <span class="nx">map</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">num</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">results</span><span class="p">[</span><span class="nx">num</span><span class="p">]</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">map</span>
+        <td class="code highlight">
+          <pre class="coffeescript">    map = {}
+    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>.keys.length-<span class="hljs-number">1</span>]
+      map[keys[num]] = results[num]
+    cb <span class="hljs-literal">null</span>, map
 
-<span class="nv">module.exports.mapOfSeries = </span><span class="nf">(obj, iterator, cb) -&gt;</span>
-
-</pre></div>
+<span class="hljs-built_in">module</span>.exports.mapOfSeries = <span class="hljs-function"><span class="hljs-params">(obj, iterator, cb)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-11" id="section-11">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
 </div>
 <p>check the object</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="k">return</span> <span class="nx">cb</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;mapOf only works on objects&quot;</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">is</span> <span class="s">&#39;object&#39;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-12" id="section-12">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
 </div>
 <p>map over object keys</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">keys = </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span> <span class="nx">obj</span>
-  <span class="nx">async</span><span class="p">.</span><span class="nx">mapSeries</span> <span class="nx">keys</span><span class="p">,</span> <span class="nf">(key, cb) -&gt;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  keys = Object.keys obj
+  async.mapSeries keys, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-13" id="section-13">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
 </div>
 <p>call iterator with value and key</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nx">iterator</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">cb</span>
-  <span class="p">,</span> <span class="nf">(err, results) -&gt;</span>
-    <span class="k">return</span> <span class="nx">cb</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    iterator obj[key], key, cb
+  , <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-14" id="section-14">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
 </div>
 <p>combine the results into an object again</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-    <span class="nv">map = </span><span class="p">{}</span>
-    <span class="k">for</span> <span class="nx">num</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">..</span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-      <span class="nx">map</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">num</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">results</span><span class="p">[</span><span class="nx">num</span><span class="p">]</span>
-    <span class="nx">cb</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">map</span>
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">    map = {}
+    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>.keys.length-<span class="hljs-number">1</span>]
+      map[keys[num]] = results[num]
+    cb <span class="hljs-literal">null</span>, map
+
+</pre>
         </td>
       </tr>
+    
   </tbody>
 </table>
+
   </div>
 </body>
 </html>

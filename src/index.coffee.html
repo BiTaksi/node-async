@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/github/node-async/src/index.coffee", defaultSidebar = true;
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-async/src/index.coffee";
+    var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,104 +39,120 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#startup%20script">Startup script</a>
+        <a href="#startup-script">Startup script</a>
       </div>
+
       <div class="heading h2">
-        <a href="#node%20modules">Node Modules</a>
+        <a href="#node-modules">Node Modules</a>
       </div>
+
       <div class="heading h2">
-        <a href="#export%20combined%20library">Export combined library</a>
+        <a href="#export-combined-library">Export combined library</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a><div class="background highlight"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-async" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
 <table cellpadding="0" cellspacing="0">
   <tbody>
+    
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="startup%20script">
+          <div class="pilwrap" id="startup-script">
   <h1>
-    <a href="#startup%20script" name="startup%20script" class="pilcrow">&#182;</a>
-    Startup script
+    <a href="#startup-script" name="startup-script" class="pilcrow"></a>
+Startup script
   </h1>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">
+
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="node%20modules">
+          <div class="pilwrap" id="node-modules">
   <h2>
-    <a href="#node%20modules" name="node%20modules" class="pilcrow">&#182;</a>
-    Node Modules
+    <a href="#node-modules" name="node-modules" class="pilcrow"></a>
+Node Modules
   </h2>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-
-
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-3" id="section-3">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
 </div>
 <p>include base modules</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">async = </span><span class="nx">require</span> <span class="s">&#39;async&#39;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">async = <span class="hljs-built_in">require</span> <span class="hljs-string">'async'</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-4" id="section-4">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
 </div>
 <p>internal modules and helpers</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">once = </span><span class="nx">require</span> <span class="s">&#39;./once&#39;</span>
-<span class="nv">mapof = </span><span class="nx">require</span> <span class="s">&#39;./mapof&#39;</span>
+        <td class="code highlight">
+          <pre class="coffeescript">once = <span class="hljs-built_in">require</span> <span class="hljs-string">'./once'</span>
+mapof = <span class="hljs-built_in">require</span> <span class="hljs-string">'./mapof'</span>
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="export%20combined%20library">
+          <div class="pilwrap" id="export-combined-library">
   <h2>
-    <a href="#export%20combined%20library" name="export%20combined%20library" class="pilcrow">&#182;</a>
-    Export combined library
+    <a href="#export-combined-library" name="export-combined-library" class="pilcrow"></a>
+Export combined library
   </h2>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">module.exports = </span><span class="nx">async</span>
+        <td class="code highlight">
+          <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports = async
 
-<span class="nv">module.exports.once = </span><span class="nx">once</span><span class="p">.</span><span class="nx">wait</span>
-<span class="nv">module.exports.onceSkip = </span><span class="nx">once</span><span class="p">.</span><span class="nx">skip</span>
-<span class="nv">module.exports.onceThrow = </span><span class="nx">once</span><span class="p">.</span><span class="nx">throw</span>
-<span class="nv">module.exports.onceTime = </span><span class="nx">once</span><span class="p">.</span><span class="nx">time</span>
+<span class="hljs-built_in">module</span>.exports.once = once.wait
+<span class="hljs-built_in">module</span>.exports.onceSkip = once.skip
+<span class="hljs-built_in">module</span>.exports.onceThrow = once.<span class="hljs-keyword">throw</span>
+<span class="hljs-built_in">module</span>.exports.onceTime = once.time
 
-<span class="nv">module.exports.mapOf = </span><span class="nx">mapof</span><span class="p">.</span><span class="nx">mapOf</span>
-<span class="nv">module.exports.mapOfLimit = </span><span class="nx">mapof</span><span class="p">.</span><span class="nx">mapOfLimit</span>
-<span class="nv">module.exports.mapOfSeries = </span><span class="nx">mapof</span><span class="p">.</span><span class="nx">mapOfSeries</span>
-</pre></div>
+<span class="hljs-built_in">module</span>.exports.mapOf = mapof.mapOf
+<span class="hljs-built_in">module</span>.exports.mapOfLimit = mapof.mapOfLimit
+<span class="hljs-built_in">module</span>.exports.mapOfSeries = mapof.mapOfSeries
+
+</pre>
         </td>
       </tr>
+    
   </tbody>
 </table>
+
   </div>
 </body>
 </html>
