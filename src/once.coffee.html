@@ -87,9 +87,7 @@ debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'de
 chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span>
 util = <span class="hljs-built_in">require</span> <span class="hljs-string">'util'</span>
 
-functionId = <span class="hljs-number">0</span>
-
-</pre>
+functionId = <span class="hljs-number">0</span></pre>
         </td>
       </tr>
     
@@ -108,8 +106,7 @@ Throw an error
           <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.<span class="hljs-keyword">throw</span> = <span class="hljs-function"><span class="hljs-params">(context, func)</span> -&gt;</span>
   <span class="hljs-keyword">unless</span> func
     func = context
-    context = <span class="hljs-literal">undefined</span>
-</pre>
+    context = <span class="hljs-literal">undefined</span></pre>
         </td>
       </tr>
     
@@ -123,8 +120,7 @@ Throw an error
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> func <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span>
-</pre>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span></pre>
         </td>
       </tr>
     
@@ -141,8 +137,7 @@ Throw an error
   func.__id ?= ++functionId
   debug <span class="hljs-string">"throw #<span class="hljs-subst">#{func.__id}</span>: created for <span class="hljs-subst">#{chalk.grey func}</span>"</span>
   <span class="hljs-keyword">if</span> context
-    debug <span class="hljs-string">"throw #<span class="hljs-subst">#{func.__id}</span>: using specific context"</span>
-</pre>
+    debug <span class="hljs-string">"throw #<span class="hljs-subst">#{func.__id}</span>: using specific context"</span></pre>
         </td>
       </tr>
     
@@ -155,8 +150,7 @@ Throw an error
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  -&gt;
-</pre>
+          <pre class="coffeescript">  -&gt;</pre>
         </td>
       </tr>
     
@@ -172,8 +166,7 @@ Throw an error
           <pre class="coffeescript">    debug <span class="hljs-string">"throw #<span class="hljs-subst">#{func.__id}</span>: called"</span>
     <span class="hljs-keyword">if</span> called
       debug <span class="hljs-string">"throw #<span class="hljs-subst">#{func.__id}</span>: called again issuing an error"</span>
-      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"This function should only be called once."</span>
-</pre>
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"This function should only be called once."</span></pre>
         </td>
       </tr>
     
@@ -187,9 +180,7 @@ Throw an error
         </td>
         <td class="code highlight">
           <pre class="coffeescript">    called = <span class="hljs-literal">true</span>
-    func.apply context, arguments
-
-</pre>
+    func.apply context, arguments</pre>
         </td>
       </tr>
     
@@ -209,8 +200,7 @@ You may use the error or not.</p>
           <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.skip = <span class="hljs-function"><span class="hljs-params">(context, func)</span> -&gt;</span>
   <span class="hljs-keyword">unless</span> func
     func = context
-    context = <span class="hljs-literal">undefined</span>
-</pre>
+    context = <span class="hljs-literal">undefined</span></pre>
         </td>
       </tr>
     
@@ -224,8 +214,7 @@ You may use the error or not.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> func <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span>
-</pre>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span></pre>
         </td>
       </tr>
     
@@ -242,8 +231,7 @@ You may use the error or not.</p>
   func.__id ?= ++functionId
   debug <span class="hljs-string">"skip #<span class="hljs-subst">#{func.__id}</span>: created for <span class="hljs-subst">#{chalk.grey func}</span>"</span>
   <span class="hljs-keyword">if</span> context
-    debug <span class="hljs-string">"skip #<span class="hljs-subst">#{func.__id}</span>: using specific context"</span>
-</pre>
+    debug <span class="hljs-string">"skip #<span class="hljs-subst">#{func.__id}</span>: using specific context"</span></pre>
         </td>
       </tr>
     
@@ -256,8 +244,7 @@ You may use the error or not.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  -&gt;
-</pre>
+          <pre class="coffeescript">  -&gt;</pre>
         </td>
       </tr>
     
@@ -270,8 +257,7 @@ You may use the error or not.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">    cb = arguments[arguments.length-<span class="hljs-number">1</span>]
-</pre>
+          <pre class="coffeescript">    cb = arguments[arguments.length-<span class="hljs-number">1</span>]</pre>
         </td>
       </tr>
     
@@ -289,8 +275,7 @@ You may use the error or not.</p>
       err = <span class="hljs-keyword">new</span> Error <span class="hljs-string">"This function should only be called once."</span>
       <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> cb <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
       <span class="hljs-keyword">return</span> err
-    debug <span class="hljs-string">"skip #<span class="hljs-subst">#{func.__id}</span>: called"</span>
-</pre>
+    debug <span class="hljs-string">"skip #<span class="hljs-subst">#{func.__id}</span>: called"</span></pre>
         </td>
       </tr>
     
@@ -304,9 +289,7 @@ You may use the error or not.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">    called = <span class="hljs-literal">true</span>
-    func.apply context, arguments
-
-</pre>
+    func.apply context, arguments</pre>
         </td>
       </tr>
     
@@ -326,8 +309,7 @@ has finished. This makes only sense with asynchronous functions.</p>
           <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.time = <span class="hljs-function"><span class="hljs-params">(context, func)</span> -&gt;</span>
   <span class="hljs-keyword">unless</span> func
     func = context
-    context = <span class="hljs-literal">undefined</span>
-</pre>
+    context = <span class="hljs-literal">undefined</span></pre>
         </td>
       </tr>
     
@@ -341,8 +323,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> func <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span>
-</pre>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span></pre>
         </td>
       </tr>
     
@@ -361,8 +342,7 @@ has finished. This makes only sense with asynchronous functions.</p>
   func.__id ?= ++functionId
   debug <span class="hljs-string">"time #<span class="hljs-subst">#{func.__id}</span>: created for <span class="hljs-subst">#{chalk.grey func}</span>"</span>
   <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> context <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span> <span class="hljs-keyword">and</span> Object.keys(context).length
-    debug <span class="hljs-string">"time #<span class="hljs-subst">#{func.__id}</span>: using specific context <span class="hljs-subst">#{chalk.grey util.inspect context}</span>"</span>
-</pre>
+    debug <span class="hljs-string">"time #<span class="hljs-subst">#{func.__id}</span>: using specific context <span class="hljs-subst">#{chalk.grey util.inspect context}</span>"</span></pre>
         </td>
       </tr>
     
@@ -375,8 +355,7 @@ has finished. This makes only sense with asynchronous functions.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript"><span class="hljs-function">  <span class="hljs-title">nfunc</span> = -&gt;</span>
-</pre>
+          <pre class="coffeescript"><span class="hljs-function">  <span class="hljs-title">nfunc</span> = -&gt;</span></pre>
         </td>
       </tr>
     
@@ -391,8 +370,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight">
           <pre class="coffeescript">    args = [].slice.call arguments
     cb = args.pop() ? {}
-    idargs = util.inspect(args[<span class="hljs-number">0.</span>.]).replace <span class="hljs-regexp">/\n\s*/g</span>, <span class="hljs-string">' '</span>
-</pre>
+    idargs = util.inspect(args[<span class="hljs-number">0.</span>.]).replace <span class="hljs-regexp">/\n\s*/g</span>, <span class="hljs-string">' '</span></pre>
         </td>
       </tr>
     
@@ -412,8 +390,7 @@ has finished. This makes only sense with asynchronous functions.</p>
     <span class="hljs-keyword">else</span>
       debug <span class="hljs-string">"time #<span class="hljs-subst">#{func.__id}</span>: <span class="hljs-subst">#{chalk.grey idargs}</span> called"</span>
       listeners.push cb
-    started = <span class="hljs-literal">true</span>
-</pre>
+    started = <span class="hljs-literal">true</span></pre>
         </td>
       </tr>
     
@@ -444,8 +421,7 @@ start sending back and reopening method</p>
         <td class="code highlight">
           <pre class="coffeescript">      started = <span class="hljs-literal">false</span>
       work = [].slice.call listeners
-      listeners = []
-</pre>
+      listeners = []</pre>
         </td>
       </tr>
     
@@ -460,8 +436,7 @@ start sending back and reopening method</p>
         <td class="code highlight">
           <pre class="coffeescript">      <span class="hljs-keyword">for</span> cb <span class="hljs-keyword">in</span> work
         debug <span class="hljs-string">"time #<span class="hljs-subst">#{func.__id}</span>: <span class="hljs-subst">#{chalk.grey idargs}</span> inform listener"</span>
-        cb.apply context, arguments
-</pre>
+        cb.apply context, arguments</pre>
         </td>
       </tr>
     
@@ -478,8 +453,7 @@ start sending back and reopening method</p>
         [id, args, cb] = next.shift()
         debug <span class="hljs-string">"time #<span class="hljs-subst">#{func.__id}</span>: <span class="hljs-subst">#{chalk.grey id}</span> restart"</span>
         args.push cb
-        nfunc.apply <span class="hljs-keyword">this</span>, args
-</pre>
+        nfunc.apply <span class="hljs-keyword">this</span>, args</pre>
         </td>
       </tr>
     
@@ -508,9 +482,7 @@ start sending back and reopening method</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">    func.apply context, args
-  nfunc
-
-</pre>
+  nfunc</pre>
         </td>
       </tr>
     
@@ -530,8 +502,7 @@ has finished. This makes only sense with asynchronous functions.</p>
           <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.wait = <span class="hljs-function"><span class="hljs-params">(context, func)</span> -&gt;</span>
   <span class="hljs-keyword">unless</span> func
     func = context
-    context = <span class="hljs-literal">undefined</span>
-</pre>
+    context = <span class="hljs-literal">undefined</span></pre>
         </td>
       </tr>
     
@@ -545,8 +516,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> func <span class="hljs-keyword">is</span> <span class="hljs-string">'function'</span>
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span>
-</pre>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Argument func is not a function!"</span></pre>
         </td>
       </tr>
     
@@ -566,8 +536,7 @@ has finished. This makes only sense with asynchronous functions.</p>
   func.__id ?= ++functionId
   debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: created for <span class="hljs-subst">#{chalk.grey func}</span>"</span>
   <span class="hljs-keyword">if</span> context
-    debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: using specific context"</span>
-</pre>
+    debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: using specific context"</span></pre>
         </td>
       </tr>
     
@@ -580,8 +549,7 @@ has finished. This makes only sense with asynchronous functions.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  -&gt;
-</pre>
+          <pre class="coffeescript">  -&gt;</pre>
         </td>
       </tr>
     
@@ -595,8 +563,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">    args = [].slice.call arguments
-    cb = args.pop() ? {}
-</pre>
+    cb = args.pop() ? {}</pre>
         </td>
       </tr>
     
@@ -611,8 +578,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight">
           <pre class="coffeescript">    <span class="hljs-keyword">if</span> done
       debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: called again -&gt; send result"</span>
-      <span class="hljs-keyword">return</span> cb.apply context, results
-</pre>
+      <span class="hljs-keyword">return</span> cb.apply context, results</pre>
         </td>
       </tr>
     
@@ -629,8 +595,7 @@ has finished. This makes only sense with asynchronous functions.</p>
     <span class="hljs-keyword">if</span> started
       debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: called again while running"</span>
       <span class="hljs-keyword">return</span>
-    debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: called"</span>
-</pre>
+    debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: called"</span></pre>
         </td>
       </tr>
     
@@ -645,8 +610,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         <td class="code highlight">
           <pre class="coffeescript">    started = <span class="hljs-literal">true</span>
     args.push -&gt;
-      debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: done"</span>
-</pre>
+      debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: done"</span></pre>
         </td>
       </tr>
     
@@ -660,8 +624,7 @@ has finished. This makes only sense with asynchronous functions.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">      done = <span class="hljs-literal">true</span>
-      results = [].slice.call arguments
-</pre>
+      results = [].slice.call arguments</pre>
         </td>
       </tr>
     
@@ -677,8 +640,7 @@ has finished. This makes only sense with asynchronous functions.</p>
           <pre class="coffeescript">      <span class="hljs-keyword">for</span> cb <span class="hljs-keyword">in</span> listeners
         debug <span class="hljs-string">"wait #<span class="hljs-subst">#{func.__id}</span>: inform listener"</span>
         cb.apply context, results
-      listeners = <span class="hljs-literal">null</span>
-</pre>
+      listeners = <span class="hljs-literal">null</span></pre>
         </td>
       </tr>
     
@@ -691,9 +653,7 @@ has finished. This makes only sense with asynchronous functions.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">    func.apply context, args
-
-</pre>
+          <pre class="coffeescript">    func.apply context, args</pre>
         </td>
       </tr>
     

@@ -68,9 +68,7 @@
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">async = <span class="hljs-built_in">require</span> <span class="hljs-string">'async'</span>
-
-</pre>
+          <pre class="coffeescript">async = <span class="hljs-built_in">require</span> <span class="hljs-string">'async'</span></pre>
         </td>
       </tr>
     
@@ -88,8 +86,7 @@ of arrays.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">
-<span class="hljs-built_in">module</span>.exports.mapOf = <span class="hljs-function"><span class="hljs-params">(obj, iterator, cb)</span> -&gt;</span>
-</pre>
+<span class="hljs-built_in">module</span>.exports.mapOf = <span class="hljs-function"><span class="hljs-params">(obj, iterator, cb)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -102,8 +99,7 @@ of arrays.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
-</pre>
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span></pre>
         </td>
       </tr>
     
@@ -117,8 +113,7 @@ of arrays.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  keys = Object.keys obj
-  async.map keys, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span>
-</pre>
+  async.map keys, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -133,8 +128,7 @@ of arrays.</p>
         <td class="code highlight">
           <pre class="coffeescript">    iterator obj[key], key, cb
   , <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
-    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
-</pre>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err</pre>
         </td>
       </tr>
     
@@ -152,8 +146,7 @@ of arrays.</p>
       map[keys[num]] = results[num]
     cb <span class="hljs-literal">null</span>, map
 
-<span class="hljs-built_in">module</span>.exports.mapOfLimit = <span class="hljs-function"><span class="hljs-params">(obj, limit, iterator, cb)</span> -&gt;</span>
-</pre>
+<span class="hljs-built_in">module</span>.exports.mapOfLimit = <span class="hljs-function"><span class="hljs-params">(obj, limit, iterator, cb)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -166,8 +159,7 @@ of arrays.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
-</pre>
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span></pre>
         </td>
       </tr>
     
@@ -181,8 +173,7 @@ of arrays.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  keys = Object.keys obj
-  async.mapLimit keys, limit, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span>
-</pre>
+  async.mapLimit keys, limit, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -197,8 +188,7 @@ of arrays.</p>
         <td class="code highlight">
           <pre class="coffeescript">    iterator obj[key], key, cb
   , <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
-    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
-</pre>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err</pre>
         </td>
       </tr>
     
@@ -216,8 +206,7 @@ of arrays.</p>
       map[keys[num]] = results[num]
     cb <span class="hljs-literal">null</span>, map
 
-<span class="hljs-built_in">module</span>.exports.mapOfSeries = <span class="hljs-function"><span class="hljs-params">(obj, iterator, cb)</span> -&gt;</span>
-</pre>
+<span class="hljs-built_in">module</span>.exports.mapOfSeries = <span class="hljs-function"><span class="hljs-params">(obj, iterator, cb)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -230,8 +219,7 @@ of arrays.</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
-</pre>
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> cb <span class="hljs-keyword">new</span> Error <span class="hljs-string">"mapOf only works on objects"</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span></pre>
         </td>
       </tr>
     
@@ -245,8 +233,7 @@ of arrays.</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  keys = Object.keys obj
-  async.mapSeries keys, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span>
-</pre>
+  async.mapSeries keys, <span class="hljs-function"><span class="hljs-params">(key, cb)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -261,8 +248,7 @@ of arrays.</p>
         <td class="code highlight">
           <pre class="coffeescript">    iterator obj[key], key, cb
   , <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
-    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err
-</pre>
+    <span class="hljs-keyword">return</span> cb err <span class="hljs-keyword">if</span> err</pre>
         </td>
       </tr>
     
@@ -278,9 +264,7 @@ of arrays.</p>
           <pre class="coffeescript">    map = {}
     <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>.keys.length-<span class="hljs-number">1</span>]
       map[keys[num]] = results[num]
-    cb <span class="hljs-literal">null</span>, map
-
-</pre>
+    cb <span class="hljs-literal">null</span>, map</pre>
         </td>
       </tr>
     
