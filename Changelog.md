@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.0.1 (2016-04-29)
+-------------------------------------------------
+No changes in code, only deprecated message.
+
+- Add deprecated message.
+- Fixed general link in README.
+
 Version 1.0.0 (2016-02-04)
 -------------------------------------------------
 - Upgraded alinex-builder.
