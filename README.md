@@ -1,9 +1,10 @@
 Package: alinex-async
 =================================================
 
-[![Build Status](https://travis-ci.org/alinex/node-async.svg?branch=master)](https://travis-ci.org/alinex/node-async)
-[![Coverage Status](https://coveralls.io/repos/alinex/node-async/badge.svg)](https://coveralls.io/r/alinex/node-async)
-[![Dependency Status](https://gemnasium.com/alinex/node-async.png)](https://gemnasium.com/alinex/node-async)
+> This package is deprecated and will not be developed further.
+> You will find the once... method under [util](http;//alinex.github.io/node-util)
+> and for the rest use the real [async](https://github.com/caolan/async) package
+> now in version 2.0.
 
 This package will extend the async module with more useful functions. The package
 will help in structuring in asynchronous programming.
