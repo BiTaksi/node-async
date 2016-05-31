@@ -7,7 +7,7 @@
   <script src="doc-filelist.js"></script>
   <script>
     var relativeDir = "";
-    var thisFile = "home/alex/github/node-async/README.md";
+    var thisFile = "README.md";
     var defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
@@ -214,9 +214,12 @@
 Package: alinex-async
   </h1>
 </div>
-<p><a href="https://travis-ci.org/alinex/node-async"><img src="https://travis-ci.org/alinex/node-async.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/r/alinex/node-async"><img src="https://coveralls.io/repos/alinex/node-async/badge.svg" alt="Coverage Status"></a>
-<a href="https://gemnasium.com/alinex/node-async"><img src="https://gemnasium.com/alinex/node-async.png" alt="Dependency Status"></a></p>
+<blockquote>
+<p>This package is deprecated and will not be developed further.
+You will find the once... method under <a href="http;//alinex.github.io/node-util">util</a>
+and for the rest use the real <a href="https://github.com/caolan/async">async</a> package
+now in version 2.0.</p>
+</blockquote>
 <p>This package will extend the async module with more useful functions. The package
 will help in structuring in asynchronous programming.</p>
 <ul>
@@ -235,7 +238,7 @@ So I don't need to update this library to get bugfixes of the core.</p>
 </ul>
 <blockquote>
 <p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
-following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
+following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
 </blockquote>
 <div class="pilwrap" id="install">
   <h2>
@@ -253,7 +256,7 @@ Install
 <p>And update it to the latest version later:</p>
 <pre><code class="sh">npm update alinex-async --save
 </code></pre>
-<p>Always have a look at the latest <a href="Changelog.md.html.html">changes</a>.</p>
+<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
 <div class="pilwrap" id="usage">
   <h2>
     <a href="#usage" name="usage" class="pilcrow"></a>
@@ -432,7 +435,7 @@ mapOf
 </div>
 <p>Like <a href="#map.html">map</a>, except that it iterates over objects, and passes the key as
 the second argument to the iterator.</p>
-<pre><code class="coffee">obj = {<span class="hljs-attribute">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attribute">three</span>:<span class="hljs-number">3</span>}
+<pre><code class="coffee">obj = {one:<span class="hljs-number">1</span>, two:<span class="hljs-number">2</span>, three:<span class="hljs-number">3</span>}
 async.mapOf obj, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
   <span class="hljs-comment"># do something with element `k: v`</span>
   cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
@@ -453,7 +456,7 @@ mapOfLimit
 parallel calls. If the maximum number of parallel runs is reached the
 rest will wait till any run finishes.</p>
 <pre><code class="coffee"><span class="hljs-comment"># set num to the number of parallel runs</span>
-obj = {<span class="hljs-attribute">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attribute">three</span>:<span class="hljs-number">3</span>}
+obj = {one:<span class="hljs-number">1</span>, two:<span class="hljs-number">2</span>, three:<span class="hljs-number">3</span>}
 async.mapOfLimit obj, num, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
   <span class="hljs-comment"># do something with element `k: v`</span>
   cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
@@ -470,7 +473,7 @@ mapOfSeries
 </div>
 <p>And this method will run all calls each after the other one in series. But also
 the results array will be the same in the end.</p>
-<pre><code class="coffee">obj = {<span class="hljs-attribute">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attribute">three</span>:<span class="hljs-number">3</span>}
+<pre><code class="coffee">obj = {one:<span class="hljs-number">1</span>, two:<span class="hljs-number">2</span>, three:<span class="hljs-number">3</span>}
 async.mapOfSeries obj, <span class="hljs-function"><span class="hljs-params">(v, k, cb)</span> -&gt;</span>
   <span class="hljs-comment"># do something with element `k: v`</span>
   cb <span class="hljs-literal">null</span>, v + <span class="hljs-number">1</span>
@@ -612,12 +615,12 @@ parameter. So to call it from class do so like:</p>
 <code>=&gt;</code> if you use sub functions.</p>
 <p>If you use it in <code>module.exports</code> then do it as follows:</p>
 <pre><code class="coffee"><span class="hljs-built_in">module</span>.exports =
-  <span class="hljs-attribute">anyMethod</span>: <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
+  anyMethod: <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
   <span class="hljs-comment"># and so on</span>
 
 <span class="hljs-built_in">module</span>.exports.init = async.once <span class="hljs-built_in">module</span>.exports, <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
   <span class="hljs-comment"># method...</span>
-  <span class="hljs-property">@anyMethod</span> cb
+  @anyMethod cb
 </code></pre>
 <p>Like you see above you have to declare this method separately so that the <code>async.once</code>
 method can access the now already defined module.exports object.</p>
